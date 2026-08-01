@@ -16,6 +16,8 @@ export type PageBannerProps = {
   images?: readonly PageBannerImage[];
   /** Page title overlaid on the hero tile. */
   title?: string;
+  /** Optional highlighted text next to the title. */
+  titleHighlight?: string;
   /** Short supporting line under the title. */
   description?: string;
   /** Visual treatment reserved for future variants. */

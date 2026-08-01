@@ -23,17 +23,27 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
 
   return (
     <div className="space-y-12">
-      {/* ── SIMPLE TEXT: Định nghĩa VSTEP ── */}
-      <div className="space-y-12">
+      {/* ── SPLIT LAYOUT: Định nghĩa VSTEP & Chứng chỉ VSTEP ── */}
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         {/* VSTEP là gì? */}
         {vstepDef && (
-          <section id={vstepDef.id} className="scroll-mt-40 space-y-4">
-            <Typography variant="h3" className="text-primary">
+          <section id={vstepDef.id} className="scroll-mt-40 space-y-6">
+            <Typography
+              variant="h2"
+              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+            >
               {vstepDef.title}
             </Typography>
-            <div className="text-muted-foreground">
+            <div className="space-y-4 text-zinc-600">
               {vstepDef.paragraphs?.map((p, i) => (
-                <Typography variant="p" key={i}>
+                <Typography
+                  variant="p"
+                  key={i}
+                  className={cn(
+                    "text-base leading-relaxed sm:text-lg",
+                    i === 0 && "font-semibold text-zinc-800"
+                  )}
+                >
                   {p}
                 </Typography>
               ))}
@@ -41,15 +51,25 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
           </section>
         )}
 
-        {/* Chứng chỉ VSTEP là gì? */}
+        {/* Chứng chỉ VSTEP */}
         {certDef && (
-          <section id={certDef.id} className="scroll-mt-40 space-y-4">
-            <Typography variant="h3" className="text-primary">
+          <section id={certDef.id} className="scroll-mt-40 space-y-6">
+            <Typography
+              variant="h2"
+              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+            >
               {certDef.title}
             </Typography>
-            <div className="text-muted-foreground">
+            <div className="space-y-4 text-zinc-600">
               {certDef.paragraphs?.map((p, i) => (
-                <Typography variant="p" key={i}>
+                <Typography
+                  variant="p"
+                  key={i}
+                  className={cn(
+                    "text-base leading-relaxed sm:text-lg",
+                    i === 0 && "font-semibold text-zinc-800"
+                  )}
+                >
                   {p}
                 </Typography>
               ))}
@@ -62,41 +82,46 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
       {audience && (
         <section id={audience.id} className="scroll-mt-40 space-y-4">
           <div className="space-y-4">
-            <Typography variant="h3" className="text-primary">
+            <Typography
+              variant="h2"
+              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+            >
               {audience.title}
             </Typography>
-            <Typography variant="p" className="text-muted-foreground">
+            <Typography
+              variant="p"
+              className="text-muted-foreground text-base leading-relaxed sm:text-lg"
+            >
               Chứng chỉ VSTEP là chuẩn mực đánh giá năng lực ngoại ngữ uy tín,
               đáp ứng nhu cầu thiết yếu cho nhiều nhóm đối tượng trên toàn quốc.
             </Typography>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:grid-cols-2 lg:auto-rows-[minmax(280px,auto)] lg:grid-cols-3">
             {audience.bullets?.map((item, index) => {
               const AUDIENCE_DATA = [
                 {
                   tag: "Đại học & Cao đẳng",
                   icon: Student,
-                  image: "/images/banner/tan-sinh-vien-removebg-preview.png",
-                  fitMode: "object-cover",
+                  image: "/images/banner/tan-sinh-vien.jpg",
+                  fitMode: "object-cover object-[center_15%]",
                 },
                 {
                   tag: "Sau đại học",
                   icon: GraduationCap,
-                  image: "/images/banner/tiensi-removebg-preview.png",
-                  fitMode: "object-cover object-top",
+                  image: "/images/banner/thacsi.png",
+                  fitMode: "object-cover object-center",
                 },
                 {
                   tag: "Giáo viên ngoại ngữ",
                   icon: ChalkboardTeacher,
-                  image: "/images/banner/NTL_3773-scaled-removebg-preview.png",
+                  image: "/images/banner/NTL_3773-scaled.jpg",
                   fitMode: "object-cover",
                 },
                 {
                   tag: "Cán bộ & Doanh nghiệp",
                   icon: Briefcase,
-                  image:
-                    "/images/banner/tieng-anh-cong-so-3-scaled-1-removebg-preview.png",
+                  image: "/images/banner/nguoi-di-lam.webp",
                   fitMode: "object-cover",
                 },
               ];
@@ -104,40 +129,55 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
               const data = AUDIENCE_DATA[index] ?? AUDIENCE_DATA[0]!;
               const Icon = data.icon;
 
+              // Staggered 3-column Bento Grid Layout
+              const BENTO_CLASSES = [
+                "lg:col-span-2 lg:row-span-1", // 0: Wide Top Left
+                "lg:col-span-1 lg:row-span-2", // 1: Tall Right
+                "lg:col-span-1 lg:row-span-1", // 2: Square Bottom Left
+                "lg:col-span-1 lg:row-span-1", // 3: Square Bottom Middle
+              ];
+              const bentoClass = BENTO_CLASSES[index] || "";
+
               return (
                 <div
                   key={item}
-                  className="group relative flex h-full w-full flex-col justify-between overflow-hidden rounded-2xl border border-zinc-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-xl"
+                  className={cn(
+                    "group relative flex min-h-[240px] w-full flex-col justify-between overflow-hidden rounded-3xl bg-zinc-900 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:min-h-[280px] lg:min-h-0",
+                    bentoClass
+                  )}
                 >
-                  {/* Full-width Image Area (Edge-to-Edge) */}
-                  <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden border-b border-zinc-100 bg-zinc-50/60">
-                    {/* Floating Glassmorphism Badge */}
-                    <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 rounded-full border border-white/80 bg-white/95 px-3 py-1 text-xs font-semibold text-primary shadow-sm backdrop-blur-md">
-                      <Icon weight="duotone" className="size-4" />
-                      <span>{data.tag}</span>
-                    </div>
-
-                    {/* Image with zoom on hover */}
-                    <div className="relative size-full transition-transform duration-500 group-hover:scale-105">
-                      <Image
-                        src={data.image}
-                        alt={item}
-                        fill
-                        className={cn(data.fitMode)}
-                        sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-                      />
-                    </div>
+                  {/* Absolute Fill Image Area */}
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={data.image}
+                      alt={item}
+                      fill
+                      className={cn(
+                        "transition-transform duration-700 group-hover:scale-105",
+                        data.fitMode
+                      )}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    />
                   </div>
 
-                  {/* Title Content Area */}
-                  <div className="relative z-10 flex flex-1 items-center justify-center p-5 text-center sm:p-6">
+                  {/* Gradient Overlay for Text Readability */}
+                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  {/* Floating Glassmorphism Badge */}
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-base font-semibold text-white shadow-sm backdrop-blur-md sm:text-lg">
+                    <Icon weight="duotone" className="size-6" />
+                    <span>{data.tag}</span>
+                  </div>
+
+                  {/* Title Content Area (Absolute Bottom) */}
+                  <div className="absolute bottom-0 left-0 z-20 flex w-full p-5 sm:p-6 lg:p-8">
                     {/* Watermark Icon */}
                     <Icon
                       weight="fill"
-                      className="pointer-events-none absolute -bottom-4 -right-4 z-0 size-28 -rotate-12 text-primary/5 transition-transform duration-500 group-hover:scale-110"
+                      className="absolute -right-4 -bottom-4 z-0 size-32 -rotate-12 text-white/10 transition-transform duration-500 group-hover:scale-110"
                     />
 
-                    <h4 className="relative z-10 text-base font-bold leading-snug text-zinc-900 transition-colors group-hover:text-primary sm:text-lg">
+                    <h4 className="relative z-10 text-xl leading-snug font-bold text-white drop-shadow-md sm:text-2xl lg:text-[1.65rem]">
                       {item}
                     </h4>
                   </div>

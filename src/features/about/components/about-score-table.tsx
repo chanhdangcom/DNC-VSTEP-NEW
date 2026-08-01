@@ -4,10 +4,14 @@ import {
   Certificate,
   Medal,
   Trophy,
+  CheckCircle,
+  XCircle,
+  Star,
 } from "@phosphor-icons/react/dist/ssr";
 import type { AboutScoreRow } from "../about-data";
 import { Typography } from "@/components/ui/typography";
 import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 type AboutScoreTableProps = {
   id: string;
@@ -25,51 +29,138 @@ const SCORE_ICONS: Record<string, Icon> = {
 export function AboutScoreTable({ id, title, rows }: AboutScoreTableProps) {
   return (
     <section id={id} className="scroll-mt-40">
-      <div className="container px-4">
-        <Typography variant="h3" className="mb-12 text-center text-white">
+      <div className="">
+        <Typography
+          variant="h2"
+          className="text-primary mb-12 border-none text-center text-3xl font-bold sm:text-4xl"
+        >
           {title}
         </Typography>
 
-        <div className="mx-auto w-full max-w-4xl">
-          <div className="flex flex-col gap-4 sm:gap-5">
+        <div className="mx-auto w-full">
+          {/* SaaS Pricing Tier Layout */}
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 xl:items-center">
             {rows.map((row) => {
               const ScoreIcon = SCORE_ICONS[row.id] ?? Certificate;
+              const isBasic = row.id === "duoi-4";
+              const isPopular = row.id === "bac-4";
+              const isPremium = row.id === "bac-5";
 
               return (
-                <Card
+                <div
                   key={row.id}
-                  className="relative overflow-hidden border-primary/40 p-5 shadow-xl shadow-primary/10 grid gap-4 sm:p-6 lg:grid-cols-[13rem_minmax(0,1fr)] lg:items-center lg:gap-6"
+                  className={cn(
+                    "group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl",
+                    isPopular
+                      ? "ring-primary to-primary/[0.02] bg-gradient-to-b from-white shadow-lg xl:z-10 xl:h-[105%]"
+                      : "hover:ring-primary/40 ring-black/10",
+                    isBasic && "opacity-90 hover:opacity-100",
+                    isPremium &&
+                      "bg-gradient-to-b from-white to-amber-50/30 ring-amber-400"
+                  )}
                 >
-                  {/* Watermark Icon */}
-                  <div className="pointer-events-none absolute -bottom-8 -right-8 z-0">
-                    <ScoreIcon
-                      weight="fill"
-                      className="size-48 -rotate-12 scale-110 text-primary opacity-5"
-                    />
-                  </div>
+                  {/* Popular Badge */}
+                  {isPopular && (
+                    <div className="bg-primary absolute inset-x-0 top-0 flex h-8 items-center justify-center text-xs font-bold tracking-widest text-white uppercase">
+                      Phổ biến nhất
+                    </div>
+                  )}
+                  {/* Premium Badge */}
+                  {isPremium && (
+                    <div className="absolute inset-x-0 top-0 flex h-8 items-center justify-center bg-amber-400 text-xs font-bold tracking-widest text-amber-950 uppercase">
+                      Chuyên gia
+                    </div>
+                  )}
 
-                  <div className="border-border relative z-10 flex w-full flex-col items-center gap-4 justify-self-center border-b pb-6 lg:justify-self-start lg:border-r lg:border-b-0 lg:pr-8 lg:pb-0">
-                    <ScoreIcon
-                      weight="regular"
-                      className="text-primary size-12 scale-110"
-                      aria-hidden="true"
-                    />
-
-                    <div className="flex flex-col items-center gap-1.5 text-center">
-                      <h4 className="text-xl font-semibold leading-none tracking-tight text-primary">
+                  <div
+                    className={cn(
+                      "flex flex-1 flex-col p-6 sm:p-8",
+                      (isPopular || isPremium) && "pt-12 sm:pt-16"
+                    )}
+                  >
+                    {/* Header */}
+                    <div className="mb-6 flex flex-col items-center border-b border-zinc-100 pb-6 text-center">
+                      <div
+                        className={cn(
+                          "mb-6 flex size-16 items-center justify-center rounded-full shadow-lg ring-1",
+                          isPremium
+                            ? "bg-amber-50 text-amber-500 shadow-amber-500/30 ring-amber-200"
+                            : isPopular
+                              ? "text-primary shadow-primary/30 bg-red-50 ring-red-200"
+                              : isBasic
+                                ? "bg-zinc-50 text-zinc-400 shadow-zinc-900/5 ring-zinc-200"
+                                : "text-primary bg-white shadow-red-500/10 ring-red-100"
+                        )}
+                      >
+                        <ScoreIcon weight="duotone" className="size-8" />
+                      </div>
+                      <h4
+                        className={cn(
+                          "mb-2 text-4xl font-extrabold tracking-tight",
+                          isPremium ? "text-amber-600" : "text-primary"
+                        )}
+                      >
                         {row.score}
                       </h4>
-
-                      <p className="text-sm font-semibold tracking-wider text-primary uppercase">
+                      <p className="text-lg font-bold tracking-wider text-zinc-900 uppercase">
                         {row.level}
                       </p>
+                      {row.cefr && (
+                        <span
+                          className={cn(
+                            "mt-3 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase",
+                            isPremium
+                              ? "bg-amber-100 text-amber-800"
+                              : "bg-primary/10 text-primary"
+                          )}
+                        >
+                          CEFR: {row.cefr}
+                        </span>
+                      )}
                     </div>
-                  </div>
 
-                  <div className="relative z-10 text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">
-                    {row.description}
+                    {/* Features List */}
+                    <ul className="flex-1 space-y-4">
+                      {row.bullets.map((bullet, i) => {
+                        const [title, ...rest] = bullet.split(":");
+                        const hasTitle = rest.length > 0;
+                        const ListIcon = isBasic
+                          ? XCircle
+                          : isPremium
+                            ? Star
+                            : CheckCircle;
+
+                        return (
+                          <li key={i} className="flex items-start gap-3">
+                            <ListIcon
+                              weight="fill"
+                              className={cn(
+                                "mt-1 size-5 shrink-0",
+                                isBasic
+                                  ? "text-zinc-300"
+                                  : isPremium
+                                    ? "text-amber-500"
+                                    : "text-primary/80"
+                              )}
+                            />
+                            <p className="text-sm leading-relaxed text-zinc-600 sm:text-base">
+                              {hasTitle ? (
+                                <>
+                                  <strong className="font-semibold text-zinc-900">
+                                    {title}:
+                                  </strong>
+                                  {rest.join(":")}
+                                </>
+                              ) : (
+                                bullet
+                              )}
+                            </p>
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </div>
-                </Card>
+                </div>
               );
             })}
           </div>

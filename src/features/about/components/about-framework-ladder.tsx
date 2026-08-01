@@ -4,16 +4,8 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/ui/typography";
 import type { AboutFrameworkLadderLevel } from "../about-data";
-import { Button } from "@/components/ui/button";
-import { CaretLeft, CaretRight } from "@phosphor-icons/react/dist/ssr";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-  CardAction,
-} from "@/components/ui/card";
+import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
+import { motion, AnimatePresence } from "framer-motion";
 
 type AboutFrameworkLadderProps = {
   id: string;
@@ -30,180 +22,149 @@ export function AboutFrameworkLadder({
   vstepRange,
   className,
 }: AboutFrameworkLadderProps) {
-  const scrollRef = React.useRef<HTMLDivElement>(null);
+  // Default to the first level in the VSTEP range (usually Bậc 3)
+  const [activeIndex, setActiveIndex] = React.useState(vstepRange.from);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -350, behavior: "smooth" });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 350, behavior: "smooth" });
-    }
-  };
+  const activeLevel = levels[activeIndex];
+  const inVstep = activeIndex >= vstepRange.from && activeIndex <= vstepRange.to;
 
   return (
     <section id={id} className={cn("scroll-mt-40", className)}>
       <div className="container px-4">
-        <Typography variant="h3" className="mb-12 text-center text-white">
+        <Typography
+          variant="h2"
+          className="mb-12 border-none text-center text-3xl font-bold text-white sm:text-4xl"
+        >
           {title}
         </Typography>
 
-        <div className="mx-auto w-full max-w-7xl">
-        {/* DESKTOP ALTERNATING TIMELINE (lg and xl) */}
-        <div className="relative hidden lg:grid lg:grid-cols-6 lg:gap-x-0">
-          {/* Continuous Horizontal Line */}
-          <div className="col-span-6 col-start-1 row-start-2 h-[2px] w-full self-center bg-zinc-200" />
+        <div className="mx-auto w-full max-w-4xl">
+          {/* Tabs Navigation */}
+          <div className="mb-8 flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+            {levels.map((level, index) => {
+              const isSelected = index === activeIndex;
+              const isVstep = index >= vstepRange.from && index <= vstepRange.to;
 
-          {levels.map((level, index) => {
-            const inVstep = index >= vstepRange.from && index <= vstepRange.to;
-            const isTop = index % 2 === 0; // 0, 2, 4 are top. 1, 3, 5 are bottom.
-            const colClasses = [
-              "col-start-1",
-              "col-start-2",
-              "col-start-3",
-              "col-start-4",
-              "col-start-5",
-              "col-start-6",
-            ];
-
-            return (
-              <React.Fragment key={level.cefr}>
-                {/* Node Circle */}
-                <div
+              return (
+                <button
+                  key={level.cefr}
+                  onClick={() => setActiveIndex(index)}
                   className={cn(
-                    colClasses[index],
-                    "z-10 row-start-2 flex size-10 items-center justify-center self-center justify-self-center rounded-full border-4 border-white transition-all duration-500",
-                    inVstep
-                      ? "bg-red-700 text-white shadow-md ring-1 shadow-zinc-900/20 ring-zinc-900/20 group-hover:scale-110"
-                      : "bg-zinc-100 text-zinc-400 group-hover:bg-zinc-200 group-hover:text-zinc-700"
+                    "relative flex w-[80px] sm:w-[100px] flex-col items-center justify-center rounded-2xl py-3 font-semibold transition-all duration-300 sm:py-4",
+                    isSelected
+                      ? "bg-white text-primary shadow-lg ring-2 ring-white/50 scale-105"
+                      : "bg-white/10 text-white hover:bg-white/20"
                   )}
                 >
-                  <span className="text-sm leading-none font-bold">
-                    {index + 1}
-                  </span>
-                </div>
-
-                {/* Content Card Wrapper */}
-                <div
-                  className={cn(
-                    colClasses[index],
-                    isTop
-                      ? "row-start-1 justify-end pb-8"
-                      : "row-start-3 justify-start pt-8",
-                    "relative z-20 flex w-[280px] flex-col justify-self-center xl:w-[320px]"
-                  )}
-                >
-                  <Card
-                    className="relative w-full overflow-hidden border-primary/40 bg-zinc-100 shadow-xl shadow-primary/15"
+                  <span className="text-sm sm:text-base">Bậc {index + 1}</span>
+                  <span
+                    className={cn(
+                      "text-[10px] font-bold tracking-widest uppercase sm:text-xs",
+                      isSelected ? "text-primary/70" : "text-white/60"
+                    )}
                   >
-                    {/* Watermark Number */}
-                    <div className="pointer-events-none absolute -bottom-8 -right-4 z-0 -rotate-12 scale-110 select-none">
-                      <span className="text-[12rem] font-black leading-none tracking-tighter text-primary opacity-5">
-                        {index + 1}
+                    {level.cefr}
+                  </span>
+                  
+                  {isVstep && (
+                    <div className="absolute -top-2 -right-2 flex items-center justify-center rounded-full bg-amber-400 px-2 py-0.5 text-[9px] font-black tracking-widest text-amber-950 uppercase shadow-md">
+                      VSTEP
+                    </div>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Active Content Card */}
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-white p-6 shadow-2xl ring-1 ring-black/5 sm:p-10 md:p-12">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeIndex}
+                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ duration: 0.3 }}
+                className="relative z-10"
+              >
+                {/* Header */}
+                <div className="mb-8 flex flex-col items-start gap-4 border-b border-zinc-100 pb-8 md:flex-row md:items-center md:justify-between">
+                  <div>
+                    <h3 className="text-3xl font-extrabold text-zinc-900 sm:text-4xl">
+                      {activeLevel.label}
+                    </h3>
+                    <div className="mt-4 flex flex-wrap items-center gap-2">
+                      {inVstep && (
+                        <span className="rounded-full bg-primary px-4 py-1.5 text-xs font-bold tracking-widest text-white uppercase shadow-sm">
+                          {vstepRange.label} (Bậc {vstepRange.from + 1}-{vstepRange.to + 1})
+                        </span>
+                      )}
+                      <span className="rounded-full bg-zinc-100 px-4 py-1.5 text-xs font-bold tracking-widest text-zinc-600 uppercase">
+                        Nhóm: {activeLevel.group}
                       </span>
                     </div>
+                  </div>
 
-                    <CardHeader className="relative z-10">
-                      <CardTitle className="text-xl text-primary">{level.label}</CardTitle>
-                      <CardDescription>
-                        Tương đương:{" "}
-                        <span className="font-semibold text-primary">
-                          {level.cefr}
-                        </span>
-                      </CardDescription>
+                  {/* Big CEFR Badge */}
+                  <div className="hidden shrink-0 items-center justify-center rounded-full bg-zinc-50 size-24 ring-1 ring-black/5 md:flex">
+                    <span className="text-4xl font-black text-primary/80">
+                      {activeLevel.cefr}
+                    </span>
+                  </div>
+                </div>
 
-                      <CardAction>
-                        <span className="rounded-full bg-primary px-2.5 py-1 text-[0.65rem] font-bold tracking-widest text-primary-foreground uppercase">
-                          {level.group}
-                        </span>
-                      </CardAction>
-                    </CardHeader>
+                {/* Bento Grid Features (No bullet points) */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                  {activeLevel.features.map((feature, i) => {
+                    const [title, ...rest] = feature.split(":");
+                    const hasTitle = rest.length > 0;
 
-                    <CardContent className="relative z-10">
-                      <div className="text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">
-                        {level.summary}
+                    // Asymmetric magazine layout styles
+                    const bentoStyles = [
+                      "md:col-span-7 bg-zinc-900 text-white",
+                      "md:col-span-5 bg-primary text-white",
+                      "md:col-span-5 border border-zinc-200 bg-white text-zinc-900 shadow-sm",
+                      "md:col-span-7 bg-zinc-100 text-zinc-900",
+                    ];
+                    const style = bentoStyles[i % 4];
+
+                    return (
+                      <div
+                        key={i}
+                        className={cn(
+                          "flex flex-col justify-center rounded-[2rem] p-6 sm:p-8 transition-transform duration-500 hover:-translate-y-1",
+                          style
+                        )}
+                      >
+                        {hasTitle ? (
+                          <>
+                            <h4 className="mb-3 text-xs font-black tracking-widest uppercase opacity-70">
+                              {title}
+                            </h4>
+                            <p className="text-xl font-bold leading-snug sm:text-2xl sm:leading-tight">
+                              {rest.join(":")}
+                            </p>
+                          </>
+                        ) : (
+                          <p className="text-xl font-bold leading-snug sm:text-2xl sm:leading-tight">
+                            {feature}
+                          </p>
+                        )}
                       </div>
-                    </CardContent>
-                  </Card>
+                    );
+                  })}
                 </div>
-              </React.Fragment>
-            );
-          })}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Decorative Giant Watermark */}
+            <div className="pointer-events-none absolute -bottom-12 -right-6 z-0 select-none opacity-5">
+              <span className="text-[16rem] font-black leading-none">
+                {activeLevel.cefr}
+              </span>
+            </div>
+          </div>
         </div>
-
-        {/* MOBILE & TABLET FALLBACK (< lg) */}
-        <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:hidden">
-          {levels.map((level, index) => {
-            const inVstep = index >= vstepRange.from && index <= vstepRange.to;
-            const isLastInRowSm = index === 1 || index === 3 || index === 5;
-
-            return (
-              <div key={level.cefr} className="relative flex flex-col">
-                {/* Horizontal Connecting Lines for sm screens */}
-                {!isLastInRowSm && (
-                  <div className="absolute top-5 left-1/2 -z-10 hidden h-[2px] w-[calc(100%+1.5rem)] bg-white/30 sm:block lg:hidden" />
-                )}
-
-                {/* Vertical Connecting Line for strict mobile (< sm) */}
-                {index < levels.length - 1 && (
-                  <div className="absolute top-10 left-1/2 -z-10 h-[calc(100%-8px)] w-[2px] -translate-x-1/2 bg-white/30 sm:hidden" />
-                )}
-
-                {/* Node Circle */}
-                <div
-                  className={cn(
-                    "relative z-10 mx-auto mb-8 flex size-10 items-center justify-center rounded-full border-4 border-white transition-all duration-500",
-                    inVstep
-                      ? "bg-red-700 text-white shadow-md ring-1 shadow-zinc-900/20 ring-zinc-900/20"
-                      : "bg-zinc-100 text-zinc-400"
-                  )}
-                >
-                  <span className="text-sm leading-none font-bold">
-                    {index + 1}
-                  </span>
-                </div>
-
-                {/* Content Card */}
-                <div className="flex flex-1 flex-col">
-                  <Card
-                    className="relative flex-1 overflow-hidden border-primary/40 bg-zinc-100 shadow-xl shadow-primary/15"
-                  >
-                    {/* Watermark Number */}
-                    <div className="pointer-events-none absolute -bottom-8 -right-4 z-0 -rotate-12 scale-110 select-none">
-                      <span className="text-[12rem] font-black leading-none tracking-tighter text-primary opacity-5">
-                        {index + 1}
-                      </span>
-                    </div>
-
-                    <CardHeader className="relative z-10 pb-4">
-                      <CardTitle className="text-xl text-primary">{level.label}</CardTitle>
-                      <CardDescription>
-                        Tương đương:{" "}
-                        <span className="font-semibold text-primary">
-                          {level.cefr}
-                        </span>
-                      </CardDescription>
-                      <CardAction>
-                        <span className="rounded-full bg-primary px-2.5 py-1 text-[0.65rem] font-bold tracking-widest text-primary-foreground uppercase">
-                          {level.group}
-                        </span>
-                      </CardAction>
-                    </CardHeader>
-                    <CardContent className="relative z-10">
-                      <div className="text-sm leading-relaxed text-foreground/90 whitespace-pre-wrap">
-                        {level.summary}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
       </div>
     </section>
   );

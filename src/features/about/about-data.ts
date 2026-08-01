@@ -29,7 +29,8 @@ export type AboutScoreRow = {
   id: string;
   score: string;
   level: string;
-  description: string;
+  cefr?: string;
+  bullets: readonly string[];
 };
 
 export type AboutNavItem = {
@@ -52,24 +53,26 @@ export const aboutFaqSections: AboutFaqSection[] = [
     id: "vstep-la-gi",
     title: "VSTEP là gì?",
     paragraphs: [
-      "VSTEP là viết tắt của cụm từ tiếng Anh “Vietnamese Standardized Test of English Proficiency” nghĩa là “Kỳ thi đánh giá năng lực tiếng Anh theo Khung năng lực ngoại ngữ (NLNN) 6 bậc dành cho Việt Nam (từ bậc 1 đến bậc 6) tương đương với trình độ A1, A2, B1, B2, C1, C2)”.",
+      "VSTEP (Vietnamese Standardized Test of English Proficiency) là bài thi đánh giá năng lực tiếng Anh chính thức do Bộ GD&ĐT Việt Nam ban hành.",
+      "Được thiết kế dựa trên Khung năng lực ngoại ngữ 6 bậc, VSTEP là thước đo toàn diện và uy tín nhất, có giá trị quy đổi tương đương với các chuẩn quốc tế (A1-C2).",
     ],
   },
   {
     id: "chung-chi-vstep",
-    title: "Chứng chỉ VSTEP là gì?",
+    title: "Giá trị Chứng chỉ VSTEP",
     paragraphs: [
-      "Chứng chỉ Vstep là chứng chỉ tiếng Anh được cấp cho các thí sinh đạt đủ các điều kiện về năng lực theo khung năng lực ngoại ngữ 6 bậc dành cho Việt Nam. Chứng chỉ được cấp bởi các trường được ủy quyền của Bộ Giáo dục và Đào tạo.",
+      "Được ví như 'tấm hộ chiếu' thiết yếu để mở rộng con đường học vấn và thăng tiến sự nghiệp tại Việt Nam.",
+      "Chứng chỉ được cấp trực tiếp bởi các trường Đại học danh tiếng được Bộ GD&ĐT ủy quyền, là điều kiện bắt buộc đối với sinh viên xét tốt nghiệp, nghiên cứu sinh và cán bộ công chức.",
     ],
   },
   {
     id: "chung-chi-can-cho-ai",
     title: "Chứng chỉ VSTEP cần cho ai?",
     bullets: [
-      "Sinh viên các trường Đại học, Cao đẳng.",
-      "Thí sinh trình độ sau đại học (Thạc sĩ và Tiến sĩ).",
-      "Giáo viên tiếng Anh.",
-      "Người đi làm tại các cơ quan, doanh nghiệp.",
+      "Sinh viên các trường Đại học & Cao đẳng",
+      "Học viên Sau đại học (Thạc sĩ, Tiến sĩ)",
+      "Giáo viên giảng dạy Tiếng Anh",
+      "Cán bộ, Công chức & Người đi làm",
     ],
   },
 ];
@@ -78,13 +81,10 @@ export type AboutFrameworkLadderLevel = {
   id: string;
   label: string;
   cefr: string;
-  /** Sơ cấp / Trung cấp / Cao cấp */
   group: string;
-  /** Tóm tắt năng lực nổi bật của bậc. */
-  summary: string;
+  features: readonly string[];
 };
 
-/** Biểu đồ bậc thang 6 bậc — bản tóm gọn của khung năng lực. */
 export const aboutFrameworkLadder = {
   id: "khung-6-bac",
   title: "Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam",
@@ -96,48 +96,70 @@ export const aboutFrameworkLadder = {
       label: "Bậc 1",
       cefr: "A1",
       group: "Sơ cấp",
-      summary:
-        "Hiểu và sử dụng các từ, câu quen thuộc trong đời sống hằng ngày. Có thể tự giới thiệu, hỏi đáp thông tin cá nhân và giao tiếp đơn giản khi người đối thoại nói chậm, rõ.",
+      features: [
+        "Ngôn từ: Sử dụng từ/câu quen thuộc hằng ngày.",
+        "Giao tiếp: Tự giới thiệu, hỏi đáp cá nhân đơn giản.",
+        "Điều kiện: Người đối thoại cần nói chậm và rõ.",
+      ],
     },
     {
       id: "bac-2",
       label: "Bậc 2",
       cefr: "A2",
       group: "Sơ cấp",
-      summary:
-        "Hiểu các câu và cách diễn đạt thường gặp về gia đình, mua sắm, công việc và địa phương. Có thể trao đổi ngắn về chủ đề quen thuộc, mô tả bản thân và nhu cầu thiết yếu.",
+      features: [
+        "Chủ đề: Hiểu cách diễn đạt về gia đình, công việc.",
+        "Giao tiếp: Trao đổi ngắn gọn các chủ đề quen thuộc.",
+        "Mô tả: Tự mô tả bản thân và nhu cầu thiết yếu.",
+      ],
     },
     {
       id: "bac-3",
       label: "Bậc 3",
       cefr: "B1",
       group: "Trung cấp",
-      summary:
-        "Hiểu ý chính của nội dung rõ ràng về học tập, công việc và đời sống. Có thể xử lý tình huống thường gặp, kể trải nghiệm, trình bày kế hoạch và viết đoạn văn đơn giản có liên kết.",
+      features: [
+        "Đọc hiểu: Nắm bắt ý chính học tập, công việc.",
+        "Giao tiếp: Xử lý tốt các tình huống thường gặp.",
+        "Kỹ năng: Kể trải nghiệm, trình bày kế hoạch.",
+        "Viết: Soạn thảo đoạn văn đơn giản có liên kết.",
+      ],
     },
     {
       id: "bac-4",
       label: "Bậc 4",
       cefr: "B2",
       group: "Trung cấp",
-      summary:
-        "Hiểu ý chính của văn bản phức tạp, kể cả nội dung chuyên môn quen thuộc. Có thể giao tiếp khá trôi chảy, viết rõ ràng, chi tiết và trình bày quan điểm với lập luận phù hợp.",
+      features: [
+        "Đọc hiểu: Xử lý văn bản phức tạp & chuyên môn.",
+        "Giao tiếp: Trôi chảy, trao đổi tự nhiên.",
+        "Viết: Soạn thảo rõ ràng, chi tiết đa dạng chủ đề.",
+        "Lập luận: Trình bày quan điểm logic, phù hợp.",
+      ],
     },
     {
       id: "bac-5",
       label: "Bậc 5",
       cefr: "C1",
       group: "Cao cấp",
-      summary:
-        "Hiểu văn bản dài, khó và nhận biết được hàm ý. Có thể diễn đạt lưu loát, linh hoạt trong môi trường xã hội, học thuật và chuyên môn; viết nội dung chặt chẽ, có cấu trúc.",
+      features: [
+        "Đọc hiểu: Xử lý văn bản dài, khó & hiểu hàm ý.",
+        "Giao tiếp: Lưu loát, linh hoạt trong nhiều môi trường.",
+        "Ứng dụng: Giao tiếp xã hội, học thuật, chuyên môn.",
+        "Viết: Nội dung chặt chẽ, cấu trúc logic hoàn hảo.",
+      ],
     },
     {
       id: "bac-6",
       label: "Bậc 6",
       cefr: "C2",
       group: "Cao cấp",
-      summary:
-        "Hiểu gần như toàn bộ nội dung nghe và đọc một cách dễ dàng. Có thể tổng hợp thông tin từ nhiều nguồn, lập luận mạch lạc và diễn đạt chính xác, tự nhiên với những sắc thái tinh tế.",
+      features: [
+        "Đọc/Nghe: Hiểu gần như toàn bộ một cách dễ dàng.",
+        "Kỹ năng: Tổng hợp thông tin từ nhiều nguồn.",
+        "Lập luận: Mạch lạc, logic và sắc bén.",
+        "Diễn đạt: Chính xác, tự nhiên với sắc thái tinh tế.",
+      ],
     },
   ] as const satisfies readonly AboutFrameworkLadderLevel[],
 } as const;
@@ -241,28 +263,47 @@ export const aboutScoreSection = {
       id: "duoi-4",
       score: "Dưới 4,0",
       level: "Không xét",
-      description: "Không xét khi sử dụng định dạng đề thi này.",
+      bullets: [
+        "Chưa đạt yêu cầu tối thiểu (Bậc 3).",
+        "Cần trau dồi thêm kỹ năng nền tảng.",
+        "Khuyến nghị thi bậc 2 (A2).",
+      ],
     },
     {
       id: "bac-3",
       score: "4,0 – 5,5",
       level: "Bậc 3",
-      description:
-        "Hiểu được ý chính về các chủ đề quen thuộc trong công việc, học tập và đời sống. Có thể xử lý các tình huống giao tiếp thông thường, viết văn bản đơn giản, mô tả trải nghiệm và trình bày ngắn gọn kế hoạch cá nhân.",
+      cefr: "B1",
+      bullets: [
+        "Đọc hiểu: Nắm bắt ý chính chủ đề quen thuộc.",
+        "Giao tiếp: Xử lý tốt các tình huống hàng ngày.",
+        "Viết: Soạn văn bản đơn giản, có liên kết.",
+        "Diễn đạt: Mô tả lưu loát sự kiện, kế hoạch.",
+      ],
     },
     {
       id: "bac-4",
       score: "6,0 – 8,0",
       level: "Bậc 4",
-      description:
-        "Hiểu được văn bản phức tạp về các chủ đề cụ thể, trừu tượng và chuyên môn. Có thể giao tiếp trôi chảy với người bản ngữ, viết nội dung rõ ràng, chi tiết và trình bày quan điểm cùng ưu, nhược điểm của từng lựa chọn.",
+      cefr: "B2",
+      bullets: [
+        "Đọc hiểu: Hiểu văn bản phức tạp, chuyên môn.",
+        "Giao tiếp: Trôi chảy, tự nhiên với người bản ngữ.",
+        "Viết: Trình bày rõ ràng, chi tiết nhiều chủ đề.",
+        "Diễn đạt: Phân tích đa chiều, nêu bật ưu/nhược.",
+      ],
     },
     {
       id: "bac-5",
       score: "8,5 – 10",
       level: "Bậc 5",
-      description:
-        "Hiểu được các văn bản dài, phức tạp và nhận biết hàm ý. Có thể diễn đạt lưu loát, sử dụng ngôn ngữ linh hoạt trong môi trường xã hội, học thuật và chuyên môn, đồng thời viết nội dung chặt chẽ về những chủ đề khó.",
+      cefr: "C1",
+      bullets: [
+        "Đọc hiểu: Nhận biết hàm ý sâu xa và ẩn dụ.",
+        "Giao tiếp: Phản xạ tức thì, trôi chảy xuất sắc.",
+        "Ngôn ngữ: Uyển chuyển trong học thuật & công việc.",
+        "Viết: Cấu trúc chặt chẽ, từ vựng bậc cao.",
+      ],
     },
   ] as const satisfies readonly AboutScoreRow[],
 } as const;
@@ -275,41 +316,40 @@ export const aboutExamFormatSection = {
       id: "nghe",
       title: "Kỹ năng nghe hiểu",
       bullets: [
-        "Thời gian khoảng 40 phút, khoảng 35 câu hỏi",
-        "Nghe hội thoại, thông báo và bài nói ngắn/dài",
-        "Chọn đáp án đúng theo nội dung nghe",
-        "Thang điểm 0–10, làm tròn đến 0,5",
+        "Thời gian: Khoảng 40 phút.",
+        "Số lượng: Khoảng 35 câu hỏi trắc nghiệm.",
+        "Nội dung: Nghe hội thoại, thông báo và bài nói ngắn/dài.",
+        "Chấm điểm: Thang điểm 0–10, làm tròn đến 0,5.",
       ],
     },
     {
       id: "doc",
       title: "Kỹ năng đọc hiểu",
       bullets: [
-        "Thời gian khoảng 60 phút, khoảng 40 câu hỏi",
-        "Đọc đoạn văn học thuật và phổ thông",
-        "Trả lời câu hỏi về ý chính, chi tiết, từ vựng, suy luận",
-        "Thang điểm 0–10, làm tròn đến 0,5",
+        "Thời gian: Khoảng 60 phút.",
+        "Số lượng: Khoảng 40 câu hỏi trắc nghiệm.",
+        "Nội dung: Đọc các đoạn văn học thuật và phổ thông.",
+        "Yêu cầu: Trả lời câu hỏi về ý chính, chi tiết, từ vựng, suy luận.",
       ],
     },
     {
       id: "viet",
       title: "Kỹ năng viết",
       bullets: [
-        "Thời gian khoảng 60 phút, gồm 2 phần",
-        "Viết thư/email hoặc đoạn văn ngắn theo tình huống",
-        "Viết bài luận trình bày quan điểm có lập luận",
-        "Thang điểm 0–10, làm tròn đến 0,5",
+        "Thời gian: Khoảng 60 phút, bao gồm 2 phần thi.",
+        "Phần 1: Viết thư/email hoặc đoạn văn ngắn theo tình huống.",
+        "Phần 2: Viết bài luận trình bày quan điểm có lập luận.",
+        "Chấm điểm: Thang điểm 0–10, làm tròn đến 0,5.",
       ],
     },
     {
       id: "noi",
       title: "Kỹ năng nói",
       bullets: [
-        "Thời gian khoảng 12 phút",
-        "Giới thiệu / tương tác xã hội",
-        "Giải quyết tình huống",
-        "Trình bày quan điểm theo chủ đề",
-        "Thang điểm 0–10, làm tròn đến 0,5",
+        "Thời gian: Khoảng 12 phút.",
+        "Phần 1: Tương tác xã hội (tự giới thiệu, trả lời câu hỏi).",
+        "Phần 2: Thảo luận giải pháp cho một tình huống.",
+        "Phần 3: Trình bày quan điểm theo chủ đề bốc thăm.",
       ],
     },
   ] as const satisfies readonly AboutAccordionItem[],

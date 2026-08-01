@@ -11,7 +11,7 @@ import { AboutExamPaper } from "./about-exam-paper";
 
 export function AboutContent() {
   return (
-    <div className="mx-auto max-w-7xl space-y-12 sm:space-y-14 lg:space-y-16">
+    <div className="mx-auto max-w-7xl space-y-12 sm:space-y-14 lg:space-y-28">
       <AboutFaqBlocks sections={aboutFaqSections} />
 
       <div className="to-primary relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-gradient-to-br from-[#8a0000] via-[#5a0000] py-16 sm:py-24">
@@ -37,14 +37,14 @@ export function AboutContent() {
             levels={aboutFrameworkLadder.levels}
             vstepRange={aboutFrameworkLadder.vstepRange}
           />
-
-          <AboutScoreTable
-            id={aboutScoreSection.id}
-            title={aboutScoreSection.title}
-            rows={aboutScoreSection.rows}
-          />
         </div>
       </div>
+
+      <AboutScoreTable
+        id={aboutScoreSection.id}
+        title={aboutScoreSection.title}
+        rows={aboutScoreSection.rows}
+      />
 
       <AboutExamPaper
         id={aboutExamFormatSection.id}
