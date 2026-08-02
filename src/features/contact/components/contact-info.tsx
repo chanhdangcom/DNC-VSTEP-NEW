@@ -9,7 +9,7 @@ import {
 import { Typography } from "@/components/ui/typography";
 
 type ContactInfoItem = {
-  icon: any;
+  icon: React.ElementType;
   title: string;
   content: ReactNode;
 };

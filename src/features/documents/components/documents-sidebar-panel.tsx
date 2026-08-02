@@ -236,16 +236,14 @@ export function DocumentsSidebarPanel({
                         className={cn(
                           "h-11 rounded-2xl px-4 text-sm font-medium transition-all duration-200",
                           isActive
-                            ? "bg-primary/10 font-semibold text-primary hover:bg-primary/15 hover:text-primary dark:bg-primary/20 dark:text-primary-foreground"
+                            ? "bg-primary/10 text-primary hover:bg-primary/15 hover:text-primary dark:bg-primary/20 dark:text-primary-foreground font-semibold"
                             : "text-muted-foreground hover:bg-muted/80 hover:text-foreground font-normal"
                         )}
                       >
                         <IconComponent
                           className={cn(
                             "size-5 shrink-0 transition-colors",
-                            isActive
-                              ? "text-primary"
-                              : "text-muted-foreground"
+                            isActive ? "text-primary" : "text-muted-foreground"
                           )}
                           weight={isActive ? "fill" : "regular"}
                         />

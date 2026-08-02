@@ -31,7 +31,9 @@ export function AboutTopNav({ items }: AboutTopNavProps) {
     }
 
     updateActiveFromScroll();
-    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    window.addEventListener("scroll", updateActiveFromScroll, {
+      passive: true,
+    });
     window.addEventListener("resize", updateActiveFromScroll);
 
     return () => {
@@ -57,16 +59,16 @@ export function AboutTopNav({ items }: AboutTopNavProps) {
       className={cn(
         "sticky z-40 -mx-4 mb-10 px-4 transition-all duration-300 sm:-mx-8 sm:px-8",
         // Position below main header (assuming it's sticky).
-        // Main header is roughly 72px tall. 
-        "top-[72px]", 
-        isScrolled 
-          ? "border-b border-zinc-200/80 bg-white/85 backdrop-blur-xl py-3 shadow-sm"
+        // Main header is roughly 72px tall.
+        "top-[72px]",
+        isScrolled
+          ? "border-b border-zinc-200/80 bg-white/85 py-3 shadow-sm backdrop-blur-xl"
           : "bg-transparent py-4"
       )}
     >
       <nav
         aria-label="Mục lục Giới thiệu"
-        className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none"
+        className="flex scrollbar-none items-center gap-2 overflow-x-auto pb-1"
       >
         <ul className="flex min-w-max items-center gap-1 sm:gap-2">
           {items.map((item) => {
@@ -77,7 +79,7 @@ export function AboutTopNav({ items }: AboutTopNavProps) {
                   href={`#${item.id}`}
                   onClick={(event) => handleClick(event, item.id)}
                   className={cn(
-                    "inline-block whitespace-nowrap rounded-full px-4 py-2 text-[0.9375rem] font-medium transition-all duration-200",
+                    "inline-block rounded-full px-4 py-2 text-[0.9375rem] font-medium whitespace-nowrap transition-all duration-200",
                     isActive
                       ? "bg-zinc-900 text-white shadow-md"
                       : "text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900"

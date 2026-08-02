@@ -34,7 +34,7 @@ export function PageAnimatedHero({
       {/* ── RICH GEOMETRIC ANIMATED BACKGROUND ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Subtle Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] bg-[size:4rem_4rem]" />
 
         {/* 1. Giant Slowly Rotating Background Star/Cross */}
         <motion.div
@@ -68,12 +68,11 @@ export function PageAnimatedHero({
 
         {/* Glowing Orbs */}
         <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-red-400/20 blur-[80px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-orange-400/10 blur-[100px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-orange-400/10 blur-[100px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto flex h-full flex-col items-center justify-center py-12 text-center sm:py-16 lg:py-20">
+      <div className="relative z-10 container mx-auto flex h-full flex-col items-center justify-center py-12 text-center sm:py-16 lg:py-20">
         <div className="animate-in fade-in slide-in-from-bottom-4 mx-auto flex max-w-4xl flex-col items-center gap-6 duration-700">
-          
           {/* Breadcrumb (Glassmorphism Pill) */}
           {breadcrumbs?.length ? (
             <div className="rounded-full border border-white/10 bg-white/5 px-6 py-2 shadow-sm backdrop-blur-md">
@@ -123,7 +122,7 @@ export function PageAnimatedHero({
 
           {/* Subtitle description */}
           {banner.description && (
-            <p className="max-w-2xl text-base font-medium leading-relaxed text-white/80 sm:text-lg sm:leading-relaxed">
+            <p className="max-w-2xl text-base leading-relaxed font-medium text-white/80 sm:text-lg sm:leading-relaxed">
               {banner.description}
             </p>
           )}

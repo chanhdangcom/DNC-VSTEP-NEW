@@ -27,7 +27,8 @@ const AUDIENCE_SLIDES: readonly AudienceSlide[] = [
   },
   {
     title: "Giáo viên tiếng Anh",
-    image: "/images/collaborative-process-multicultural-businesspeople-using-laptop-presentation-communication-meeting-brainstorming-ideas-about-project-colleagues-working-plan-success-strategy-modern-office-scaled.jpg",
+    image:
+      "/images/collaborative-process-multicultural-businesspeople-using-laptop-presentation-communication-meeting-brainstorming-ideas-about-project-colleagues-working-plan-success-strategy-modern-office-scaled.jpg",
     description:
       "Nâng cao chuẩn năng lực sư phạm, đáp ứng yêu cầu khung năng lực đối với giáo viên giảng dạy ngoại ngữ các cấp.",
   },
@@ -149,14 +150,14 @@ export function AboutAudienceSlider() {
           <button
             onClick={() => paginate(-1)}
             aria-label="Previous slide"
-            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-105 active:scale-95 sm:size-12"
+            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/20 active:scale-95 sm:size-12"
           >
             <CaretLeft className="size-5 sm:size-6" weight="bold" />
           </button>
           <button
             onClick={() => paginate(1)}
             aria-label="Next slide"
-            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:bg-white/20 hover:scale-105 active:scale-95 sm:size-12"
+            className="flex size-10 items-center justify-center rounded-full bg-white/10 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-white/20 active:scale-95 sm:size-12"
           >
             <CaretRight className="size-5 sm:size-6" weight="bold" />
           </button>
@@ -176,7 +177,7 @@ export function AboutAudienceSlider() {
           >
             <span
               className={cn(
-                "absolute inset-y-0 left-0 bg-primary transition-all duration-300",
+                "bg-primary absolute inset-y-0 left-0 transition-all duration-300",
                 idx === currentIndex ? "w-full" : "w-0"
               )}
             />

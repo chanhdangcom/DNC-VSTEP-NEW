@@ -29,7 +29,7 @@ export function GlobalSearchUI() {
 
     document.addEventListener("keydown", down);
     window.addEventListener("open-global-search", handleCustomEvent);
-    
+
     return () => {
       document.removeEventListener("keydown", down);
       window.removeEventListener("open-global-search", handleCustomEvent);

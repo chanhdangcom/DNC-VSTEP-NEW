@@ -70,20 +70,14 @@ export function AboutStickyNav({ items }: AboutStickyNavProps) {
     };
   }, [items]);
 
-  function handleClick(
-    event: React.MouseEvent<HTMLAnchorElement>,
-    id: string
-  ) {
+  function handleClick(event: React.MouseEvent<HTMLAnchorElement>, id: string) {
     event.preventDefault();
     const el = document.getElementById(id);
     if (!el) return;
 
     setActiveId(id);
     const top =
-      window.scrollY +
-      el.getBoundingClientRect().top -
-      getScrollOffset() +
-      4;
+      window.scrollY + el.getBoundingClientRect().top - getScrollOffset() + 4;
     window.scrollTo({ top, behavior: "smooth" });
     history.replaceState(null, "", `#${id}`);
   }
@@ -91,10 +85,7 @@ export function AboutStickyNav({ items }: AboutStickyNavProps) {
   return (
     <div className="sticky top-[var(--app-header-height)] z-30 border-b border-zinc-200/80 bg-white/95 backdrop-blur-sm">
       <div className="container px-4">
-        <nav
-          aria-label="Mục lục giới thiệu"
-          className="-mx-1 overflow-x-auto"
-        >
+        <nav aria-label="Mục lục giới thiệu" className="-mx-1 overflow-x-auto">
           <ul className="flex min-w-max gap-1 py-2">
             {items.map((item) => {
               const isActive = activeId === item.id;
@@ -109,7 +100,7 @@ export function AboutStickyNav({ items }: AboutStickyNavProps) {
                       "inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-all duration-200",
                       isActive
                         ? "bg-primary/10 text-primary font-semibold"
-                        : "text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800 font-medium"
+                        : "font-medium text-zinc-500 hover:bg-zinc-100 hover:text-zinc-800"
                     )}
                   >
                     <IconComponent

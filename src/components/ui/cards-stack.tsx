@@ -260,8 +260,12 @@ function StackingCard({
   scrollYProgress,
   shouldReduceMotion,
 }: StackingCardProps) {
-  const { y, scale, opacity, rotate, zIndex, pointerEvents } =
-    useCardMotion(scrollYProgress, index, total, shouldReduceMotion);
+  const { y, scale, opacity, rotate, zIndex, pointerEvents } = useCardMotion(
+    scrollYProgress,
+    index,
+    total,
+    shouldReduceMotion
+  );
 
   return (
     <motion.div

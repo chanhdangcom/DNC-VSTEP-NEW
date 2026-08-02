@@ -51,13 +51,13 @@ export function PageWaveHero({
           <div className="absolute inset-0 flex flex-col justify-center p-5 sm:p-8 lg:p-10">
             <div className="container flex flex-col space-y-4 sm:space-y-8">
               {breadcrumbs?.length ? (
-                <PageBreadcrumb
-                  items={breadcrumbs}
-                  tone="onDark"
-                />
+                <PageBreadcrumb items={breadcrumbs} tone="onDark" />
               ) : null}
 
-              <Typography variant="h1" className="text-5xl leading-tight text-white sm:text-7xl drop-shadow-md max-w-4xl">
+              <Typography
+                variant="h1"
+                className="max-w-4xl text-5xl leading-tight text-white drop-shadow-md sm:text-7xl"
+              >
                 {title}
               </Typography>
 

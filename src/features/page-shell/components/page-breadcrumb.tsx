@@ -32,22 +32,26 @@ export function PageBreadcrumb({
 
           return (
             <React.Fragment key={`${item.label}-${index}`}>
-              {index > 0 && <BreadcrumbSeparator className={cn(onDark && "text-white/50")} />}
+              {index > 0 && (
+                <BreadcrumbSeparator
+                  className={cn(onDark && "text-white/50")}
+                />
+              )}
               <BreadcrumbItem>
                 {item.href && !isLast ? (
                   <BreadcrumbLink
                     render={<Link href={item.href} />}
                     className={cn(
-                      "text-sm font-medium sm:text-base transition-colors",
+                      "text-sm font-medium transition-colors sm:text-base",
                       onDark ? "text-white/70 hover:text-white" : ""
                     )}
                   >
                     {item.label}
                   </BreadcrumbLink>
                 ) : (
-                  <BreadcrumbPage 
+                  <BreadcrumbPage
                     className={cn(
-                      "text-sm font-semibold sm:text-base", 
+                      "text-sm font-semibold sm:text-base",
                       onDark ? "text-white" : ""
                     )}
                   >

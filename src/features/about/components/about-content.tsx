@@ -14,7 +14,7 @@ export function AboutContent() {
     <div className="mx-auto max-w-7xl space-y-12 sm:space-y-14 lg:space-y-28">
       <AboutFaqBlocks sections={aboutFaqSections} />
 
-      <div className="to-primary relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-gradient-to-br from-[#8a0000] via-[#5a0000] py-16 sm:py-24">
+      <div className="to-primary relative left-1/2 flex h-[720px] w-screen -translate-x-1/2 flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#8a0000] via-[#5a0000] sm:h-[620px]">
         {/* ── Họa tiết trang trí phá cách: Typography & Diagonal Lines ── */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {/* Chữ VSTEP khổng lồ mờ nhạt (Watermark) */}
@@ -30,7 +30,7 @@ export function AboutContent() {
           <div className="absolute top-[40%] -right-[5%] h-[150%] w-[6px] rotate-[35deg] bg-white/[0.02] blur-[2px]" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl space-y-16 sm:space-y-24">
+        <div className="relative z-10 mx-auto w-full max-w-7xl">
           <AboutFrameworkLadder
             id={aboutFrameworkLadder.id}
             title={aboutFrameworkLadder.title}

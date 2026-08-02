@@ -34,8 +34,8 @@ export function LegalDocumentCard({ item }: LegalDocumentCardProps) {
 
         {/* Main Info Area */}
         <div className="flex min-w-0 flex-1 items-center py-3.5 pr-2">
-          <Typography 
-            variant="h4" 
+          <Typography
+            variant="h4"
             className="group-hover:text-primary m-0 line-clamp-2 text-balance transition-colors duration-200"
           >
             {item.title}

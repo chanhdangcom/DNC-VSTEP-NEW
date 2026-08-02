@@ -20,7 +20,7 @@ export function AboutHero() {
       {/* ── RICH GEOMETRIC ANIMATED BACKGROUND ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {/* Subtle Grid Pattern Overlay */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)] bg-[size:4rem_4rem]" />
 
         {/* 1. Giant Slowly Rotating Background Star/Cross */}
         <motion.div
@@ -54,14 +54,13 @@ export function AboutHero() {
 
         {/* Glowing Orbs */}
         <div className="absolute top-1/4 left-1/4 h-64 w-64 rounded-full bg-red-400/20 blur-[80px]" />
-        <div className="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-orange-400/10 blur-[100px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-64 w-64 rounded-full bg-orange-400/10 blur-[100px]" />
       </div>
 
       <div className="relative z-10 container flex h-full flex-col items-center justify-center py-20 text-center sm:py-28 lg:py-32">
         <div className="animate-in fade-in slide-in-from-bottom-4 mx-auto flex max-w-4xl flex-col items-center gap-6 duration-700">
-          
           {/* Breadcrumb (Glassmorphism Pill) */}
-          <div className="rounded-full border border-white/10 bg-white/5 px-6 py-2 backdrop-blur-md shadow-sm">
+          <div className="rounded-full border border-white/10 bg-white/5 px-6 py-2 shadow-sm backdrop-blur-md">
             <Breadcrumb>
               <BreadcrumbList className="justify-center">
                 {aboutPageBreadcrumbs.map((item, index) => {
@@ -93,13 +92,21 @@ export function AboutHero() {
           </div>
 
           {/* Title */}
-          <Typography variant="h1" className="text-5xl leading-tight font-black tracking-tight text-white drop-shadow-sm sm:text-6xl md:text-7xl">
-            Về Kỳ Thi <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500">VSTEP</span>
+          <Typography
+            variant="h1"
+            className="text-5xl leading-tight font-black tracking-tight text-white drop-shadow-sm sm:text-6xl md:text-7xl"
+          >
+            Về Kỳ Thi{" "}
+            <span className="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+              VSTEP
+            </span>
           </Typography>
 
           {/* Subtitle description */}
           <p className="max-w-2xl text-base leading-relaxed font-medium text-white/80 sm:text-lg sm:leading-relaxed">
-            Kỳ thi đánh giá năng lực tiếng Anh theo Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam, đáp ứng nhu cầu chuẩn hóa tiếng Anh cho mọi đối tượng.
+            Kỳ thi đánh giá năng lực tiếng Anh theo Khung năng lực ngoại ngữ 6
+            bậc dùng cho Việt Nam, đáp ứng nhu cầu chuẩn hóa tiếng Anh cho mọi
+            đối tượng.
           </p>
         </div>
       </div>

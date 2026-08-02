@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import {
-  CaretDown,
-} from "@phosphor-icons/react";
+import { CaretDown } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import {
   Field,

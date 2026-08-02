@@ -67,8 +67,7 @@ const SKILL_THEMES: Record<
   },
   noi: {
     gradient: "bg-gradient-to-br from-rose-400 to-red-500",
-    shadow:
-      "shadow-red-500/10 hover:shadow-red-500/20 hover:border-red-200",
+    shadow: "shadow-red-500/10 hover:shadow-red-500/20 hover:border-red-200",
     text: "text-red-600",
     bgLight: "bg-red-50",
   },
@@ -131,7 +130,7 @@ export function AboutExamPaper({
                   {/* Left Side: Solid Gradient Highlight Box */}
                   <div
                     className={cn(
-                      "relative flex flex-col justify-between overflow-hidden p-6 sm:p-8 text-white transition-all duration-700 md:w-2/5 lg:w-1/3",
+                      "relative flex flex-col justify-between overflow-hidden p-6 text-white transition-all duration-700 sm:p-8 md:w-2/5 lg:w-1/3",
                       theme.gradient
                     )}
                   >
@@ -140,7 +139,7 @@ export function AboutExamPaper({
                     <div className="absolute -bottom-8 -left-8 z-0 size-32 rounded-full bg-black/10 blur-2xl transition-transform duration-700 group-hover:scale-150"></div>
 
                     {/* Giant Number Background */}
-                    <div className="pointer-events-none absolute -bottom-10 -right-2 z-0 transition-transform duration-700 select-none group-hover:scale-110 group-hover:-rotate-3">
+                    <div className="pointer-events-none absolute -right-2 -bottom-10 z-0 transition-transform duration-700 select-none group-hover:scale-110 group-hover:-rotate-3">
                       <span className="text-[14rem] leading-none font-black text-white/10 mix-blend-overlay">
                         0{index + 1}
                       </span>
@@ -149,7 +148,10 @@ export function AboutExamPaper({
                     {/* Top: Icon & Badge */}
                     <div className="relative z-10 flex items-start justify-between">
                       <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 shadow-inner ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 sm:size-16">
-                        <Icon weight="duotone" className="size-7 text-white sm:size-8" />
+                        <Icon
+                          weight="duotone"
+                          className="size-7 text-white sm:size-8"
+                        />
                       </div>
                       <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs font-bold tracking-widest text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
                         {partName}
@@ -157,16 +159,16 @@ export function AboutExamPaper({
                     </div>
 
                     {/* Bottom: Title & Line */}
-                    <div className="relative z-10 mt-12 sm:mt-16 text-left">
+                    <div className="relative z-10 mt-12 text-left sm:mt-16">
                       <div className="mb-4 h-1 w-10 rounded-full bg-white/40 transition-all duration-500 group-hover:w-16"></div>
-                      <h4 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
+                      <h4 className="text-3xl leading-tight font-extrabold text-white sm:text-4xl">
                         {item.title}
                       </h4>
                     </div>
                   </div>
 
                   {/* Right Side: Vertical List */}
-                  <div className="relative z-10 flex-1 p-6 sm:p-8 flex flex-col justify-center md:pl-2">
+                  <div className="relative z-10 flex flex-1 flex-col justify-center p-6 sm:p-8 md:pl-2">
                     <ul className="flex flex-col divide-y divide-zinc-200">
                       {item.bullets?.map((bullet, i) => {
                         const [keyword, ...rest] = bullet.split(":");
@@ -186,17 +188,14 @@ export function AboutExamPaper({
                                 theme.text
                               )}
                             >
-                              <BulletIcon
-                                weight="duotone"
-                                className="size-5"
-                              />
+                              <BulletIcon weight="duotone" className="size-5" />
                             </div>
-                            
-                            <div className="flex flex-col gap-1 mt-0.5">
-                              <strong className="text-zinc-900 text-[14px] font-extrabold tracking-wide uppercase transition-colors duration-300">
+
+                            <div className="mt-0.5 flex flex-col gap-1">
+                              <strong className="text-[14px] font-extrabold tracking-wide text-zinc-900 uppercase transition-colors duration-300">
                                 {hasKeyword ? keyword : "Chi tiết"}
                               </strong>
-                              
+
                               <p className="text-[15px] leading-relaxed text-zinc-600 transition-colors duration-300 group-hover/list:text-zinc-900">
                                 {hasKeyword ? (
                                   <span

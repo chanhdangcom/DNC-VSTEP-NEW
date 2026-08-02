@@ -23,7 +23,8 @@ const typographyVariants = cva("text-foreground font-momo", {
 });
 
 export interface TypographyProps
-  extends React.HTMLAttributes<HTMLElement>,
+  extends
+    React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof typographyVariants> {
   as?: React.ElementType;
 }

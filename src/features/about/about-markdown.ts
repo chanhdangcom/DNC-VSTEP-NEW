@@ -41,7 +41,7 @@ export function buildAboutMarkdown(siteOrigin?: string) {
     .join("\n\n");
 
   const scoreRows = aboutScoreSection.rows
-    .map((row) => `| ${row.score} | ${row.level} | ${row.description} |`)
+    .map((row) => `| ${row.score} | ${row.level} | ${row.bullets.join("; ")} |`)
     .join("\n");
 
   const examBlocks = aboutExamFormatSection.items

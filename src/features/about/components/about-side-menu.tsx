@@ -134,7 +134,7 @@ export function AboutSideMenu({ items, className }: AboutSideMenuProps) {
           <div className="px-3 pb-2 text-[0.75rem] font-bold tracking-wider text-zinc-400 uppercase">
             Mục lục Giới thiệu
           </div>
-          
+
           <nav className="relative flex flex-col gap-1">
             {items.map((item) => {
               const isActive = activeId === item.id;
@@ -170,7 +170,7 @@ export function AboutSideMenu({ items, className }: AboutSideMenuProps) {
                   {isActive && (
                     <motion.div
                       layoutId="activeSideMenuAccent"
-                      className="absolute left-0 top-1/2 h-1/2 w-1 -translate-y-1/2 rounded-r-full bg-primary"
+                      className="bg-primary absolute top-1/2 left-0 h-1/2 w-1 -translate-y-1/2 rounded-r-full"
                       initial={false}
                       transition={{
                         type: "spring",
