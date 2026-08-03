@@ -57,7 +57,7 @@ export function ContactInfo() {
         return (
           <div
             key={idx}
-            className="bg-card/90 ring-border/80 flex gap-4 rounded-2xl p-1.5 shadow-xs ring-1 transition-all duration-300 hover:shadow-md"
+            className="bg-card/90 flex gap-4 rounded-2xl p-1.5 shadow-sm ring-1 ring-black/10 transition-all duration-300 hover:shadow-md"
           >
             {/* Left Icon Block */}
             <div className="flex self-stretch">

@@ -7,6 +7,10 @@ import {
   CheckCircle,
   XCircle,
   Star,
+  Chats,
+  Pen,
+  Megaphone,
+  Translate,
 } from "@phosphor-icons/react/dist/ssr";
 import type { AboutScoreRow } from "../about-data";
 import { Typography } from "@/components/ui/typography";
@@ -39,7 +43,7 @@ export function AboutScoreTable({ id, title, rows }: AboutScoreTableProps) {
 
         <div className="mx-auto w-full">
           {/* SaaS Pricing Tier Layout */}
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4 xl:items-center">
+          <div className="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-4 items-stretch">
             {rows.map((row) => {
               const ScoreIcon = SCORE_ICONS[row.id] ?? Certificate;
               const isBasic = row.id === "duoi-4";
@@ -50,34 +54,29 @@ export function AboutScoreTable({ id, title, rows }: AboutScoreTableProps) {
                 <div
                   key={row.id}
                   className={cn(
-                    "group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white shadow-sm ring-1 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl",
+                    "group relative flex h-full flex-col rounded-3xl bg-white shadow-sm ring-1 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl",
                     isPopular
-                      ? "ring-primary to-primary/[0.02] bg-gradient-to-b from-white shadow-lg xl:z-10 xl:h-[105%]"
+                      ? "ring-primary to-primary/[0.02] bg-gradient-to-b from-white shadow-lg xl:z-10 ring-2"
                       : "hover:ring-primary/40 ring-black/10",
                     isBasic && "opacity-90 hover:opacity-100",
                     isPremium &&
-                      "bg-gradient-to-b from-white to-amber-50/30 ring-amber-400"
+                      "bg-gradient-to-b from-white to-amber-50/30 ring-amber-400 ring-2"
                   )}
                 >
                   {/* Popular Badge */}
                   {isPopular && (
-                    <div className="bg-primary absolute inset-x-0 top-0 flex h-8 items-center justify-center text-xs font-bold tracking-widest text-white uppercase">
+                    <div className="bg-primary absolute -top-4 left-1/2 flex h-8 -translate-x-1/2 items-center justify-center rounded-full px-4 text-xs font-bold tracking-widest text-white uppercase shadow-sm">
                       Phổ biến nhất
                     </div>
                   )}
                   {/* Premium Badge */}
                   {isPremium && (
-                    <div className="absolute inset-x-0 top-0 flex h-8 items-center justify-center bg-amber-400 text-xs font-bold tracking-widest text-amber-950 uppercase">
+                    <div className="absolute -top-4 left-1/2 flex h-8 -translate-x-1/2 items-center justify-center rounded-full bg-amber-400 px-4 text-xs font-bold tracking-widest text-amber-950 uppercase shadow-sm">
                       Chuyên gia
                     </div>
                   )}
 
-                  <div
-                    className={cn(
-                      "flex flex-1 flex-col p-6 sm:p-8",
-                      (isPopular || isPremium) && "pt-12 sm:pt-16"
-                    )}
-                  >
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
                     {/* Header */}
                     <div className="mb-6 flex flex-col items-center border-b border-zinc-100 pb-6 text-center">
                       <div
@@ -105,18 +104,16 @@ export function AboutScoreTable({ id, title, rows }: AboutScoreTableProps) {
                       <p className="text-lg font-bold tracking-wider text-zinc-900 uppercase">
                         {row.level}
                       </p>
-                      {row.cefr && (
-                        <span
-                          className={cn(
-                            "mt-3 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase",
-                            isPremium
-                              ? "bg-amber-100 text-amber-800"
-                              : "bg-primary/10 text-primary"
-                          )}
-                        >
-                          CEFR: {row.cefr}
-                        </span>
-                      )}
+                      <span
+                        className={cn(
+                          "mt-3 rounded-full px-4 py-1.5 text-xs font-bold tracking-widest uppercase",
+                          row.cefr 
+                            ? (isPremium ? "bg-amber-100 text-amber-800" : "bg-primary/10 text-primary")
+                            : "invisible" // Keep the space even if no CEFR
+                        )}
+                      >
+                        CEFR: {row.cefr || "NONE"}
+                      </span>
                     </div>
 
                     {/* Features List */}
@@ -124,16 +121,25 @@ export function AboutScoreTable({ id, title, rows }: AboutScoreTableProps) {
                       {row.bullets.map((bullet, i) => {
                         const [title, ...rest] = bullet.split(":");
                         const hasTitle = rest.length > 0;
-                        const ListIcon = isBasic
+                        let ListIcon = isBasic
                           ? XCircle
                           : isPremium
                             ? Star
                             : CheckCircle;
 
+                        if (hasTitle) {
+                          const t = title.toLowerCase();
+                          if (t.includes("đọc hiểu")) ListIcon = BookOpenText;
+                          else if (t.includes("giao tiếp")) ListIcon = Chats;
+                          else if (t.includes("viết")) ListIcon = Pen;
+                          else if (t.includes("diễn đạt")) ListIcon = Megaphone;
+                          else if (t.includes("ngôn ngữ") || t.includes("từ vựng")) ListIcon = Translate;
+                        }
+
                         return (
                           <li key={i} className="flex items-start gap-3">
                             <ListIcon
-                              weight="fill"
+                              weight="duotone"
                               className={cn(
                                 "mt-1 size-5 shrink-0",
                                 isBasic

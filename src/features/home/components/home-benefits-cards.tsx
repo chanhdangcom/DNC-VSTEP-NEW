@@ -62,8 +62,8 @@ function BenefitCard({ card, index }: BenefitCardProps) {
 
           <hr className="w-[72%] border-zinc-200" />
 
-          <div className="flex min-h-36 items-start justify-center">
-            <p className="max-w-66 text-center text-sm leading-[1.8] font-medium text-pretty text-zinc-600 sm:max-w-[18rem] sm:leading-[1.85]">
+          <div className="flex min-h-36 items-start justify-center px-4">
+            <p className="max-w-[18rem] text-center text-base leading-[1.75] font-medium text-pretty text-zinc-600 sm:max-w-[20rem] sm:text-[17px] sm:leading-[1.8]">
               {card.description}
             </p>
           </div>

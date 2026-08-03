@@ -21,7 +21,7 @@ export function ContactPage() {
         />
 
         <div className="container py-10 sm:py-14 lg:py-16">
-          <div className="grid overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm lg:grid-cols-2">
+          <div className="grid overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-black/10 lg:grid-cols-2">
             {/* ─── Cột trái: Form ─── */}
             <div className="flex flex-col items-center justify-start p-6 sm:p-10 lg:p-12 xl:p-14">
               <div className="w-full max-w-lg">

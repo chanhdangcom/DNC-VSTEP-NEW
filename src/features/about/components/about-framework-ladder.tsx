@@ -4,7 +4,6 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Typography } from "@/components/ui/typography";
 import type { AboutFrameworkLadderLevel } from "../about-data";
-import { motion, AnimatePresence } from "framer-motion";
 
 type AboutFrameworkLadderProps = {
   id: string;
@@ -21,86 +20,119 @@ export function AboutFrameworkLadder({
   vstepRange,
   className,
 }: AboutFrameworkLadderProps) {
-  // Default to Bậc 3 (B1)
   const [activeIndex, setActiveIndex] = React.useState(vstepRange.from);
-
   const activeLevel = levels[activeIndex];
 
   return (
-    <section id={id} className={cn("scroll-mt-40", className)}>
-      <div className="container px-4">
-        {/* Section Title */}
-        <Typography
-          variant="h2"
-          className="mb-8 border-none text-center text-3xl font-bold tracking-tight text-white sm:text-4xl"
-        >
-          {title}
-        </Typography>
+    <section id={id} className={cn("w-full scroll-mt-40", className)}>
+      <div className="container">
+        <div className="mx-auto w-full max-w-7xl">
+          {/* Section Title */}
+          <Typography
+            variant="h2"
+            className="mb-8 border-none text-center text-3xl font-bold tracking-tight text-balance text-white sm:text-4xl"
+          >
+            {title}
+          </Typography>
 
-        <div className="mx-auto w-full max-w-3xl space-y-6">
-          {/* Level Selector Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          {/* 1. CLEAN HORIZONTAL TAB SELECTOR */}
+          <div className="mb-6 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {levels.map((level, idx) => {
-              const isSelected = idx === activeIndex;
-              const isVstep = idx >= vstepRange.from && idx <= vstepRange.to;
+              const isActive = activeIndex === idx;
+              const isVstepTarget =
+                idx >= vstepRange.from && idx <= vstepRange.to;
 
               return (
                 <button
                   key={level.id}
+                  type="button"
                   onClick={() => setActiveIndex(idx)}
                   className={cn(
-                    "relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-300 sm:text-sm",
-                    isSelected
-                      ? "text-primary scale-105 bg-white shadow-lg ring-2 ring-white/50"
-                      : "bg-white/10 text-white/80 hover:bg-white/20 hover:text-white"
+                    "group relative flex cursor-pointer items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold transition-all duration-200 outline-none select-none",
+                    isActive
+                      ? "scale-105 bg-white text-red-600 shadow-lg ring-2 ring-white"
+                      : "bg-white/10 text-white/90 hover:bg-white/20 hover:text-white"
                   )}
                 >
+                  <span
+                    className={cn(
+                      "flex h-6 w-6 items-center justify-center rounded-full text-xs font-black transition-colors",
+                      isActive
+                        ? "bg-red-600 text-white"
+                        : "bg-white/20 text-white group-hover:bg-white/30"
+                    )}
+                  >
+                    {idx + 1}
+                  </span>
                   <span>Bậc {idx + 1}</span>
 
-                  {isVstep && (
-                    <span className="flex size-1.5 rounded-full bg-amber-400" />
+                  {/* VSTEP range dot */}
+                  {isVstepTarget && !isActive && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
                   )}
                 </button>
               );
             })}
           </div>
 
-          {/* Card Container with polished min-height to prevent text clipping & layout shift */}
-          <div className="min-h-[380px] sm:min-h-[340px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeLevel.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
-                className="flex min-h-[380px] flex-col justify-start space-y-4 rounded-[2rem] bg-white p-6 text-zinc-900 shadow-2xl ring-1 ring-black/5 sm:min-h-[340px] sm:space-y-5 sm:p-8"
-              >
-                {/* Card Header */}
-                <div className="border-b-2 border-zinc-100 pb-3 sm:pb-4">
-                  <h3 className="text-3xl font-extrabold tracking-tight text-zinc-900 sm:text-4xl">
-                    {activeLevel.label}
-                  </h3>
-                </div>
+          {/* 2. MINIMALIST & CRYSTAL CLEAR CONTENT CARD */}
+          <div
+            key={activeIndex}
+            className="animate-in fade-in rounded-3xl bg-white p-6 shadow-xl ring-1 ring-black/5 duration-200 sm:p-7 lg:p-8"
+          >
+            {/* Header / Level Title & Badges */}
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-100 pb-5">
+              <h3 className="text-primary text-2xl font-bold tracking-tight sm:text-3xl">
+                Bậc {activeIndex + 1}: {activeLevel?.group}
+              </h3>
 
-                {/* Structured Key Points for High Readability */}
-                <div className="space-y-3 sm:space-y-3.5">
-                  {activeLevel.keyPoints.map((pt, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <span className="mt-1 flex size-5 shrink-0 items-center justify-center rounded-full bg-red-50 text-[11px] font-black text-red-600 ring-1 ring-red-200/60">
-                        ✓
-                      </span>
-                      <p className="text-sm leading-relaxed font-medium text-zinc-700 sm:text-base">
-                        <strong className="font-bold text-zinc-900">
-                          {pt.title}:
-                        </strong>{" "}
-                        {pt.detail}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </AnimatePresence>
+              {/* Badges */}
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-zinc-100 px-3.5 py-1 text-xs font-bold text-zinc-600">
+                  CEFR {activeLevel?.cefr}
+                </span>
+                {activeIndex >= vstepRange.from &&
+                  activeIndex <= vstepRange.to && (
+                    <span className="rounded-full bg-red-50 px-3.5 py-1 text-xs font-bold text-red-600 ring-1 ring-red-600/20 ring-inset">
+                      {vstepRange.label}
+                    </span>
+                  )}
+              </div>
+            </div>
+
+            {/* Main Description */}
+            <p className="mt-5 text-base leading-relaxed text-zinc-700 sm:text-lg sm:leading-relaxed">
+              {activeLevel?.fullDescription}
+            </p>
+
+            {/* Specific Capabilities List */}
+            <div className="mt-6 border-t border-zinc-100 pt-5">
+              <h4 className="mb-3 text-sm font-bold text-zinc-900">
+                Năng lực đạt được:
+              </h4>
+              <div className="flex flex-col gap-3">
+                {activeLevel?.capabilities.map((cap, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <svg
+                      className="mt-1 h-5 w-5 shrink-0 text-red-600"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={3}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-base font-medium leading-relaxed text-zinc-700 sm:text-lg sm:leading-relaxed">
+                      {cap}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

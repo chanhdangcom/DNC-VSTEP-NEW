@@ -88,6 +88,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
             >
               {audience.title}
             </Typography>
+
             <Typography
               variant="p"
               className="text-muted-foreground text-base leading-relaxed sm:text-lg"
@@ -164,8 +165,9 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                   <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
 
                   {/* Floating Glassmorphism Badge */}
-                  <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-base font-semibold text-white shadow-sm backdrop-blur-md sm:text-lg">
+                  <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur-md">
                     <Icon weight="duotone" className="size-6" />
+
                     <span>{data.tag}</span>
                   </div>
 
@@ -177,7 +179,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                       className="absolute -right-4 -bottom-4 z-0 size-32 -rotate-12 text-white/10 transition-transform duration-500 group-hover:scale-110"
                     />
 
-                    <h4 className="relative z-10 text-xl leading-snug font-bold text-white drop-shadow-md sm:text-2xl lg:text-[1.65rem]">
+                    <h4 className="relative z-10 text-xl leading-snug font-bold whitespace-pre-line text-white drop-shadow-md sm:text-xl">
                       {item}
                     </h4>
                   </div>

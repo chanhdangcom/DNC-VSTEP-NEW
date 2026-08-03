@@ -96,131 +96,144 @@ export function AboutExamPaper({
   className,
 }: AboutExamPaperProps) {
   return (
-    <section id={id} className={cn("scroll-mt-40", className)}>
-      <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-16">
-        {/* Title area (Sticky) */}
-        <div className="h-max shrink-0 lg:sticky lg:top-40 lg:col-span-5 lg:mt-16">
-          <Typography
-            variant="h2"
-            className="text-primary mb-4 border-none text-3xl font-bold sm:text-4xl lg:text-5xl lg:leading-tight"
-          >
-            Hình thức bài thi
-            <br />
-            VSTEP bậc 3 – 5
-          </Typography>
-          <p className="text-muted-foreground text-lg leading-relaxed lg:text-xl">
-            Cấu trúc chi tiết 4 phần thi VSTEP trên máy tính. Mỗi kỹ năng được
-            thiết kế chuyên biệt để đánh giá chính xác năng lực sử dụng ngôn ngữ
-            của thí sinh.
-          </p>
-        </div>
+    <section
+      id={id}
+      className={cn(
+        "relative left-1/2 w-screen -translate-x-1/2 scroll-mt-40 bg-zinc-100 py-12 sm:py-16 lg:py-20",
+        className
+      )}
+    >
+      <div className="container">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-16">
+          {/* Title area (Sticky) */}
+          <div className="h-max shrink-0 lg:sticky lg:top-40 lg:col-span-5 lg:mt-16">
+            <Typography
+              variant="h2"
+              className="text-primary mb-4 border-none text-3xl font-bold sm:text-4xl lg:text-5xl lg:leading-tight"
+            >
+              Hình thức bài thi
+              <br />
+              VSTEP bậc 3 – 5
+            </Typography>
+            <p className="text-muted-foreground text-lg leading-relaxed lg:text-xl">
+              Cấu trúc chi tiết 4 phần thi VSTEP trên máy tính. Mỗi kỹ năng được
+              thiết kế chuyên biệt để đánh giá chính xác năng lực sử dụng ngôn
+              ngữ của thí sinh.
+            </p>
+          </div>
 
-        {/* Main Content Area: Stacked Cards */}
-        <div className="lg:col-span-7">
-          <CardsStack>
-            {items.map((item, index) => {
-              const Icon = ICONS[item.id] ?? CheckCircle;
-              const partName = PART_NAMES[item.id] ?? "PHẦN THI";
-              const theme = SKILL_THEMES[item.id] || SKILL_THEMES.nghe;
-              return (
-                <Card
-                  key={item.id}
-                  className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-zinc-50 p-0 shadow-sm ring-1 ring-black/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:flex-row"
-                >
-                  {/* Left Side: Solid Gradient Highlight Box */}
-                  <div
-                    className={cn(
-                      "relative flex flex-col justify-between overflow-hidden p-6 text-white transition-all duration-700 sm:p-8 md:w-2/5 lg:w-1/3",
-                      theme.gradient
-                    )}
+          {/* Main Content Area: Stacked Cards */}
+          <div className="lg:col-span-7">
+            <CardsStack>
+              {items.map((item, index) => {
+                const Icon = ICONS[item.id] ?? CheckCircle;
+                const partName = PART_NAMES[item.id] ?? "PHẦN THI";
+                const theme = SKILL_THEMES[item.id] || SKILL_THEMES.nghe;
+                return (
+                  <Card
+                    key={item.id}
+                    className="group relative flex flex-col overflow-hidden rounded-[2.5rem] bg-zinc-50 p-0 shadow-sm ring-1 ring-black/10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl md:flex-row"
                   >
-                    {/* Decorative Orbs */}
-                    <div className="absolute -top-12 -right-12 z-0 size-40 rounded-full bg-white/20 blur-2xl transition-transform duration-700 group-hover:scale-150"></div>
-                    <div className="absolute -bottom-8 -left-8 z-0 size-32 rounded-full bg-black/10 blur-2xl transition-transform duration-700 group-hover:scale-150"></div>
+                    {/* Left Side: Solid Gradient Highlight Box */}
+                    <div
+                      className={cn(
+                        "relative flex flex-col justify-between overflow-hidden p-6 text-white transition-all duration-700 sm:p-8 md:w-2/5 lg:w-1/3",
+                        theme.gradient
+                      )}
+                    >
+                      {/* Decorative Orbs */}
+                      <div className="absolute -top-12 -right-12 z-0 size-40 rounded-full bg-white/20 blur-2xl transition-transform duration-700 group-hover:scale-150"></div>
+                      <div className="absolute -bottom-8 -left-8 z-0 size-32 rounded-full bg-black/10 blur-2xl transition-transform duration-700 group-hover:scale-150"></div>
 
-                    {/* Giant Number Background */}
-                    <div className="pointer-events-none absolute -right-2 -bottom-10 z-0 transition-transform duration-700 select-none group-hover:scale-110 group-hover:-rotate-3">
-                      <span className="text-[14rem] leading-none font-black text-white/10 mix-blend-overlay">
-                        0{index + 1}
-                      </span>
-                    </div>
-
-                    {/* Top: Icon & Badge */}
-                    <div className="relative z-10 flex items-start justify-between">
-                      <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 shadow-inner ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 sm:size-16">
-                        <Icon
-                          weight="duotone"
-                          className="size-7 text-white sm:size-8"
-                        />
+                      {/* Giant Number Background */}
+                      <div className="pointer-events-none absolute -right-2 -bottom-10 z-0 transition-transform duration-700 select-none group-hover:scale-110 group-hover:-rotate-3">
+                        <span className="text-[14rem] leading-none font-black text-white/10 mix-blend-overlay">
+                          0{index + 1}
+                        </span>
                       </div>
-                      <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs font-bold tracking-widest text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
-                        {partName}
+
+                      {/* Top: Icon & Badge */}
+                      <div className="relative z-10 flex items-start justify-between">
+                        <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white/20 shadow-inner ring-1 ring-white/30 backdrop-blur-md transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6 sm:size-16">
+                          <Icon
+                            weight="duotone"
+                            className="size-7 text-white sm:size-8"
+                          />
+                        </div>
+                        <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs font-bold tracking-widest text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
+                          {partName}
+                        </div>
+                      </div>
+
+                      {/* Bottom: Title & Line */}
+                      <div className="relative z-10 mt-12 text-left sm:mt-16">
+                        <div className="mb-4 h-1 w-10 rounded-full bg-white/40 transition-all duration-500 group-hover:w-16"></div>
+                        <h4 className="text-3xl leading-tight font-extrabold text-balance text-white sm:text-4xl">
+                          {item.title}
+                        </h4>
                       </div>
                     </div>
 
-                    {/* Bottom: Title & Line */}
-                    <div className="relative z-10 mt-12 text-left sm:mt-16">
-                      <div className="mb-4 h-1 w-10 rounded-full bg-white/40 transition-all duration-500 group-hover:w-16"></div>
-                      <h4 className="text-3xl leading-tight font-extrabold text-white sm:text-4xl">
-                        {item.title}
-                      </h4>
-                    </div>
-                  </div>
+                    {/* Right Side: Vertical List */}
+                    <div className="relative z-10 flex flex-1 flex-col justify-center p-4">
+                      <ul className="flex flex-col divide-y divide-zinc-200">
+                        {item.bullets?.map((bullet, i) => {
+                          const [keyword, ...rest] = bullet.split(":");
+                          const hasKeyword = rest.length > 0;
+                          const BulletIcon = hasKeyword
+                            ? getBulletIcon(keyword)
+                            : CheckCircle;
 
-                  {/* Right Side: Vertical List */}
-                  <div className="relative z-10 flex flex-1 flex-col justify-center p-6 sm:p-8 md:pl-2">
-                    <ul className="flex flex-col divide-y divide-zinc-200">
-                      {item.bullets?.map((bullet, i) => {
-                        const [keyword, ...rest] = bullet.split(":");
-                        const hasKeyword = rest.length > 0;
-                        const BulletIcon = hasKeyword
-                          ? getBulletIcon(keyword)
-                          : CheckCircle;
-
-                        return (
-                          <li
-                            key={i}
-                            className="group/list relative flex items-start gap-3 py-3 sm:gap-4 sm:py-4"
-                          >
-                            <div
-                              className={cn(
-                                "flex size-10 shrink-0 items-center justify-center rounded-xl bg-zinc-50 ring-1 ring-black/5 transition-all duration-500 group-hover/list:scale-110 group-hover/list:bg-white group-hover/list:shadow-sm sm:size-11",
-                                theme.text
-                              )}
+                          return (
+                            <li
+                              key={i}
+                              className="group/list relative flex items-start gap-3 py-3 sm:gap-4 sm:py-4"
                             >
-                              <BulletIcon weight="duotone" className="size-5" />
-                            </div>
-
-                            <div className="mt-0.5 flex flex-col gap-1">
-                              <strong className="text-[14px] font-extrabold tracking-wide text-zinc-900 uppercase transition-colors duration-300">
-                                {hasKeyword ? keyword : "Chi tiết"}
-                              </strong>
-
-                              <p className="text-[15px] leading-relaxed text-zinc-600 transition-colors duration-300 group-hover/list:text-zinc-900">
-                                {hasKeyword ? (
-                                  <span
-                                    dangerouslySetInnerHTML={{
-                                      __html: highlightKeywords(rest.join(":")),
-                                    }}
-                                  />
-                                ) : (
-                                  <span
-                                    dangerouslySetInnerHTML={{
-                                      __html: highlightKeywords(bullet),
-                                    }}
-                                  />
+                              <div
+                                className={cn(
+                                  "flex size-10 shrink-0 items-center justify-center rounded-xl bg-zinc-50 ring-1 ring-black/5 transition-all duration-500 group-hover/list:scale-110 group-hover/list:bg-white group-hover/list:shadow-sm sm:size-11",
+                                  theme.text
                                 )}
-                              </p>
-                            </div>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                </Card>
-              );
-            })}
-          </CardsStack>
+                              >
+                                <BulletIcon
+                                  weight="duotone"
+                                  className="size-5"
+                                />
+                              </div>
+
+                              <div className="mt-0.5 flex flex-col gap-1">
+                                <strong className="text-[14px] font-extrabold tracking-wide text-zinc-900 uppercase transition-colors duration-300">
+                                  {hasKeyword ? keyword : "Chi tiết"}
+                                </strong>
+
+                                <p className="text-sm leading-relaxed text-zinc-600 sm:text-base">
+                                  {hasKeyword ? (
+                                    <span
+                                      dangerouslySetInnerHTML={{
+                                        __html: highlightKeywords(
+                                          rest.join(":")
+                                        ),
+                                      }}
+                                    />
+                                  ) : (
+                                    <span
+                                      dangerouslySetInnerHTML={{
+                                        __html: highlightKeywords(bullet),
+                                      }}
+                                    />
+                                  )}
+                                </p>
+                              </div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  </Card>
+                );
+              })}
+            </CardsStack>
+          </div>
         </div>
       </div>
     </section>

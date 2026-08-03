@@ -5,6 +5,7 @@ import {
   useReducedMotion,
   useScroll,
   useTransform,
+  useSpring,
   type MotionValue,
 } from "motion/react";
 import { Children, isValidElement, useRef, type ReactNode } from "react";
@@ -104,7 +105,7 @@ function getCardMotionState(
   const stackedY = index * PEEK_RATIO * 100;
   const entryStart = index > 0 ? (index - 1) / segments : 0;
   const entryEnd = index > 0 ? index / segments : 0;
-  const entryRotate = index % 2 === 0 ? -1.5 : 1.5;
+  const entryRotate = 0;
 
   if (index > 0 && progress < entryStart) {
     return {
@@ -113,10 +114,9 @@ function getCardMotionState(
       opacity: 1,
       rotate: entryRotate,
       brightness: 1,
-      saturate: 1,
       shadowOpacity: 0,
       shadowY: 0,
-      zIndex: 0,
+      zIndex: 50 - index,
     };
   }
 
@@ -179,7 +179,7 @@ function getCardMotionState(
     saturate,
     shadowOpacity,
     shadowY,
-    zIndex: index + 1,
+    zIndex: 100 + index,
   };
 }
 
@@ -401,11 +401,17 @@ export function CardsStack({ children, className }: CardsStackProps) {
     offset: ["start start", "end end"],
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 150,
+    damping: 25,
+    mass: 0.5,
+  });
+
   const cardAnimEnd =
     (total * SCROLL_VH_PER_CARD) /
     (total * SCROLL_VH_PER_CARD + SCROLL_HOLD_VH);
 
-  const cardScrollYProgress = useTransform(scrollYProgress, (progress) =>
+  const cardScrollYProgress = useTransform(smoothProgress, (progress) =>
     Math.min(1, progress / cardAnimEnd)
   );
 

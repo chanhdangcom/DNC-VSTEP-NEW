@@ -17,7 +17,7 @@ export function LegalDocumentCard({ item }: LegalDocumentCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group bg-card ring-border/80 flex h-full gap-4 rounded-2xl p-1 shadow-md ring-1 shadow-black/5",
+          "group bg-card flex h-full gap-4 rounded-2xl p-1 shadow-md ring-1 shadow-black/5 ring-black/6",
           "hover:border-primary/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-lg",
           "focus-visible:ring-primary/30 focus-visible:ring-2 focus-visible:outline-none"
         )}

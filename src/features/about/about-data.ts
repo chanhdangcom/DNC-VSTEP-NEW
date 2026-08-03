@@ -70,7 +70,7 @@ export const aboutFaqSections: AboutFaqSection[] = [
     title: "Chứng chỉ VSTEP cần cho ai?",
     bullets: [
       "Sinh viên các trường Đại học & Cao đẳng",
-      "Học viên Sau đại học (Thạc sĩ, Tiến sĩ)",
+      "Học viên Sau đại học\n(Thạc sĩ, Tiến sĩ)",
       "Giáo viên giảng dạy Tiếng Anh",
       "Cán bộ, Công chức & Người đi làm",
     ],
@@ -104,7 +104,7 @@ export const aboutFrameworkLadder = {
       cefr: "A1",
       group: "Sơ cấp",
       fullDescription:
-        "Có thể hiểu, sử dụng các cấu trúc quen thuộc thường nhật; các từ ngữ cơ bản đáp ứng nhu cầu giao tiếp cụ thể. Có thể tự giới thiệu bản thân và người khác; có thể trả lời những thông tin về bản thân như nơi sinh sống, người thân/bạn bè v.v… Có thể giao tiếp đơn giản nếu người đối thoại nói chậm, rõ ràng và sẵn sàng hợp tác giúp đỡ.",
+        "Có thể hiểu và sử dụng thành thạo các cấu trúc ngôn ngữ quen thuộc thường nhật cùng những từ vựng cơ bản nhất để đáp ứng các nhu cầu giao tiếp cụ thể. Có thể tự giới thiệu bản thân, giới thiệu người khác và trả lời những thông tin cá nhân cơ bản như nơi sinh sống, người thân, bạn bè. Có thể tự tin giao tiếp ở mức độ đơn giản nếu người đối thoại nói chậm rãi, phát âm thật rõ ràng và luôn sẵn sàng hỗ trợ.",
       capabilities: [
         "Hiểu & sử dụng các cấu trúc quen thuộc thường nhật; từ ngữ cơ bản đáp ứng nhu cầu giao tiếp cụ thể.",
         "Tự giới thiệu bản thân, người khác & trả lời các thông tin cá nhân (nơi ở, người thân/bạn bè...).",
@@ -134,7 +134,7 @@ export const aboutFrameworkLadder = {
       cefr: "A2",
       group: "Sơ cấp",
       fullDescription:
-        "Có thể hiểu được các câu và cấu trúc được sử dụng thường xuyên liên quan đến nhu cầu giao tiếp cơ bản (như các thông tin về gia đình, bản thân, đi mua hàng, hỏi đường, việc làm). Có thể trao đổi thông tin về những chủ đề đơn giản, quen thuộc hằng ngày. Có thể mô tả đơn giản về bản thân, môi trường xung quanh và những vấn đề thuộc nhu cầu thiết yếu.",
+        "Có thể hiểu được các câu và cấu trúc ngôn ngữ được sử dụng thường xuyên liên quan trực tiếp đến nhu cầu giao tiếp cơ bản (như thông tin cá nhân, gia đình, mua sắm, hỏi đường, việc làm). Có thể trao đổi thông tin về những chủ đề đơn giản và quen thuộc trong đời sống hằng ngày. Có thể tự tin mô tả khái quát về bản thân, môi trường xung quanh và chia sẻ chi tiết về những vấn đề thuộc nhu cầu thiết yếu nhất.",
       capabilities: [
         "Hiểu các câu & cấu trúc thường xuyên liên quan nhu cầu cơ bản (gia đình, bản thân, mua hàng, hỏi đường, việc làm).",
         "Trao đổi thông tin về những chủ đề đơn giản, quen thuộc hằng ngày.",
@@ -164,7 +164,7 @@ export const aboutFrameworkLadder = {
       cefr: "B1",
       group: "Trung cấp",
       fullDescription:
-        "Có thể hiểu được các ý chính của một đoạn văn hay bài phát biểu chuẩn mực, rõ ràng về các chủ đề quen thuộc trong công việc, trường học, giải trí, v.v… Có thể xử lý hầu hết các tình huống xảy ra khi đến khu vực có sử dụng ngôn ngữ đó. Có thể viết đoạn văn đơn giản liên quan đến các chủ đề quen thuộc hoặc cá nhân quan tâm. Có thể mô tả được những kinh nghiệm, sự kiện, giấc mơ, hy vọng, hoài bão và có thể trình bày ngắn gọn các lý do, giải thích ý kiến và kế hoạch của mình.",
+        "Có thể hiểu rõ các ý chính của một đoạn văn hay bài phát biểu chuẩn mực về các chủ đề quen thuộc trong công việc, học tập và giải trí. Có thể tự tin xử lý hầu hết các tình huống phát sinh khi di chuyển đến khu vực có sử dụng ngôn ngữ đó. Có thể viết đoạn văn đơn giản về các chủ đề cá nhân quan tâm, mô tả chi tiết những trải nghiệm, ước mơ của bản thân và chủ động giải thích ngắn gọn các dự định, kế hoạch.",
       capabilities: [
         "Hiểu ý chính của một đoạn văn hay bài phát biểu chuẩn mực, rõ ràng về các chủ đề quen thuộc (công việc, trường học, giải trí...).",
         "Xử lý hầu hết các tình huống xảy ra khi đến khu vực có sử dụng ngôn ngữ đó.",
@@ -195,7 +195,7 @@ export const aboutFrameworkLadder = {
       cefr: "B2",
       group: "Trung cấp",
       fullDescription:
-        "Có thể hiểu ý chính của một văn bản phức tạp về các chủ đề cụ thể và trừu tượng, kể cả những trao đổi kỹ thuật thuộc lĩnh vực chuyên môn của bản thân. Có thể giao tiếp ở mức độ trôi chảy, tự nhiên với người bản ngữ. Có thể viết được các văn bản rõ ràng, chi tiết với nhiều chủ đề khác nhau và có thể giải thích quan điểm của mình về một vấn đề, nêu ra được những ưu điểm, nhược điểm của các phương án lựa chọn khác nhau.",
+        "Có thể hiểu trọn vẹn ý chính của một văn bản phức tạp về các chủ đề cụ thể lẫn trừu tượng, bao gồm cả những trao đổi kỹ thuật thuộc chuyên môn của bản thân. Có thể giao tiếp ở mức độ trôi chảy, hoàn toàn tự nhiên và thoải mái với người bản ngữ. Có thể viết các văn bản rõ ràng, chi tiết về nhiều chủ đề đa dạng trong cuộc sống, đồng thời phân tích cực kỳ sắc bén về ưu và nhược điểm của các phương án lựa chọn.",
       capabilities: [
         "Hiểu ý chính của một văn bản phức tạp về chủ đề cụ thể & trừu tượng, kể cả trao đổi kỹ thuật thuộc lĩnh vực chuyên môn.",
         "Giao tiếp ở mức độ trôi chảy, tự nhiên với người bản ngữ.",
@@ -226,7 +226,7 @@ export const aboutFrameworkLadder = {
       cefr: "C1",
       group: "Cao cấp",
       fullDescription:
-        "Có thể hiểu và nhận biết được hàm ý của các văn bản dài với phạm vi rộng. Có thể diễn đạt trôi chảy, tức thì, không gặp khó khăn trong việc tìm từ ngữ diễn đạt. Có thể sử dụng ngôn ngữ linh hoạt và hiệu quả phục vụ các mục đích xã hội, học thuật và chuyên môn. Có thể viết rõ ràng, chặt chẽ, chi tiết về các chủ đề phức tạp, thể hiện được khả năng tổ chức văn bản, sử dụng tốt từ ngữ nối câu và các công cụ liên kết.",
+        "Có thể đọc hiểu dễ dàng và nhận biết sâu sắc hàm ý ẩn dụ của các văn bản dài với phạm vi chủ đề cực kỳ rộng rãi. Có thể diễn đạt trôi chảy, tức thì và không gặp bất kỳ khó khăn nào trong việc tìm kiếm từ ngữ phù hợp. Có thể sử dụng ngôn ngữ linh hoạt, mang lại hiệu quả cao cho các mục đích xã hội, học thuật, chuyên môn. Có thể viết rõ ràng, chặt chẽ về các chủ đề phức tạp với kỹ năng tổ chức rất xuất sắc.",
       capabilities: [
         "Hiểu và nhận biết được hàm ý của các văn bản dài với phạm vi rộng.",
         "Diễn đạt trôi chảy, tức thì, không gặp khó khăn trong việc tìm từ ngữ diễn đạt.",
@@ -257,7 +257,7 @@ export const aboutFrameworkLadder = {
       cefr: "C2",
       group: "Cao cấp",
       fullDescription:
-        "Có thể hiểu một cách dễ dàng hầu hết văn nói và viết. Có thể tóm tắt các nguồn thông tin nói hoặc viết, sắp xếp lại thông tin và trình bày lại một cách logic. Có thể diễn đạt tức thì, rất trôi chảy và chính xác, phân biệt được các ý nghĩa tinh tế khác nhau trong các tình huống phức tạp.",
+        "Có thể thấu hiểu một cách dễ dàng và trọn vẹn hầu hết tất cả các nguồn thông tin bằng văn bản nói và văn bản viết. Có thể tóm tắt hiệu quả các nguồn thông tin, tự tin sắp xếp lại các lập luận và trình bày một cách logic, thuyết phục. Có thể diễn đạt tức thì, cực kỳ trôi chảy và chính xác tuyệt đối, đồng thời phân biệt được những sắc thái ý nghĩa tinh tế nhất ngay cả trong các tình huống giao tiếp phức tạp.",
       capabilities: [
         "Hiểu một cách dễ dàng hầu hết văn nói và viết.",
         "Tóm tắt các nguồn thông tin nói hoặc viết, sắp xếp lại thông tin và trình bày lại một cách logic.",

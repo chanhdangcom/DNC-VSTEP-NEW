@@ -100,7 +100,7 @@ function DocumentsPageContent({
                 id={section.id}
                 className="scroll-mt-28 space-y-3.5"
               >
-                <h2 className="text-lg font-semibold tracking-tight text-zinc-900 sm:text-xl">
+                <h2 className="text-lg font-bold tracking-tight text-zinc-900 sm:text-xl">
                   {section.title}
                 </h2>
 
