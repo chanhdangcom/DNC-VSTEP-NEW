@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import type { PageBannerImage, PageBreadcrumbItem } from "../types";
 
 const DEFAULT_IMAGE: PageBannerImage = {
-  src: "/images/banner/collage/dnc-campus-hero.jpg",
+  src: "/images/banner/bg-gioi-thieu.jfif",
   alt: "Banner VSTEP Trường Đại học Nam Cần Thơ",
 };
 

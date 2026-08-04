@@ -1,15 +1,16 @@
 import { HeaderMain } from "@/features/main/header";
 import { FooterMain } from "@/features/main/footer";
 import { AboutContent } from "./components/about-content";
-import { PageAnimatedHero, aboutPageBreadcrumbs } from "@/features/page-shell";
+import { PageImageHero, aboutPageBreadcrumbs } from "@/features/page-shell";
 
 export function AboutPage() {
   return (
     <div className="flex min-h-dvh flex-col bg-zinc-50">
       <HeaderMain solid />
 
-      <main className="flex-1">
-        <PageAnimatedHero
+      <main className="flex-1 pt-[var(--app-header-height)]">
+        <PageImageHero
+          imageUrl="/images/banner/gioithieu.jfif"
           banner={{
             title: "Về Kỳ Thi",
             titleHighlight: "VSTEP",
@@ -18,7 +19,7 @@ export function AboutPage() {
           }}
           breadcrumbs={aboutPageBreadcrumbs}
         />
-        <div className="container py-12 sm:py-16 lg:py-24">
+        <div className="container py-8 lg:py-12">
           <AboutContent />
         </div>
       </main>

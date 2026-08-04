@@ -1,6 +1,7 @@
 export { PageShell } from "./components/page-shell";
 export { PageBanner } from "./components/page-banner";
 export { PageAnimatedHero } from "./components/page-animated-hero";
+export { PageImageHero } from "./components/page-image-hero";
 export { PageWaveHero } from "./components/page-wave-hero";
 export {
   PageHubHero,

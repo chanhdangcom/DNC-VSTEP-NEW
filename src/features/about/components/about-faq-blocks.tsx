@@ -162,7 +162,10 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                   </div>
 
                   {/* Gradient Overlay for Text Readability */}
-                  <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  {/* Elegant Border Overlay */}
+                  <div className="pointer-events-none absolute inset-0 z-30 rounded-3xl inset-ring-1 inset-ring-white/15 ring-1 ring-black/10" />
 
                   {/* Floating Glassmorphism Badge */}
                   <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur-md">

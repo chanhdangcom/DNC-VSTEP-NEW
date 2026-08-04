@@ -26,7 +26,7 @@ export function AboutFrameworkLadder({
   return (
     <section id={id} className={cn("w-full scroll-mt-40", className)}>
       <div className="container">
-        <div className="mx-auto w-full max-w-7xl">
+        <div className="mx-auto w-full">
           {/* Section Title */}
           <Typography
             variant="h2"
@@ -126,7 +126,7 @@ export function AboutFrameworkLadder({
                         d="M5 13l4 4L19 7"
                       />
                     </svg>
-                    <span className="text-base font-medium leading-relaxed text-zinc-700 sm:text-lg sm:leading-relaxed">
+                    <span className="text-base leading-relaxed font-medium text-zinc-700 sm:text-lg sm:leading-relaxed">
                       {cap}
                     </span>
                   </div>

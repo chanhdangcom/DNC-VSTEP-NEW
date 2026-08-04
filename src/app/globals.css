@@ -81,8 +81,8 @@
   --glow-violet: rgba(99, 102, 241, 0.28);
   --glow-sky: rgba(14, 165, 233, 0.22);
 
-  --app-header-top-height: 2.5rem;
-  --app-header-main-height: 3.5rem;
+  --app-header-top-height: 3rem;
+  --app-header-main-height: 4.5rem;
   /* Mobile: top bar hidden — header is main bar only */
   --app-header-height: var(--app-header-main-height);
 
@@ -160,7 +160,7 @@
 
 @media (min-width: 40rem) {
   :root {
-    --app-header-main-height: 3.75rem;
+    --app-header-main-height: 4.5rem;
     --app-header-height: calc(
       var(--app-header-top-height) + var(--app-header-main-height)
     );
@@ -255,7 +255,7 @@ html {
 }
 
 .container {
-  max-width: 100rem;
+  max-width: 88rem;
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
@@ -992,4 +992,32 @@ html {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Custom Main Scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--foreground) 30%, transparent)
+    transparent;
+  scrollbar-gutter: stable;
+}
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: color-mix(in oklch, var(--foreground) 25%, transparent);
+  border-radius: 9999px;
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary);
 }

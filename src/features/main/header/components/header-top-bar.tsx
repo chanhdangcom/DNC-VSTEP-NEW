@@ -8,26 +8,26 @@ import { Typography } from "@/components/ui/typography";
 /** Top bar — clean, minimal dark strip. */
 export function HeaderTopBar() {
   return (
-    <div className="bg-primary text-primary-foreground/80 flex w-full shrink-0 items-center py-2">
+    <div className="flex h-full w-full shrink-0 items-center bg-amber-300 text-amber-900">
       <div className="container flex h-full items-center justify-end gap-4">
         <Typography
           variant="small"
-          className="min-w-0 truncate text-right tracking-[0.06em]"
+          className="min-w-0 truncate text-right tracking-[0.04em]"
         >
           <a
             href="https://nctu.edu.vn/"
             target="_blank"
-            className="text-primary-foreground/90"
+            className="font-semibold text-amber-950 transition-colors hover:text-rose-700"
           >
             Trường Đại học Nam Cần Thơ
           </a>
-          <span aria-hidden className="text-primary-foreground/50 mx-3">
+          <span aria-hidden className="mx-3 text-amber-400">
             |
           </span>
           <a
             href="https://ttcdr.nctu.edu.vn/"
             target="_blank"
-            className="text-primary-foreground/90"
+            className="font-semibold text-amber-950 transition-colors hover:text-rose-700"
           >
             Trung tâm Chuẩn đầu ra
           </a>
@@ -36,11 +36,11 @@ export function HeaderTopBar() {
         <button
           type="button"
           onClick={() => window.dispatchEvent(new Event("open-global-search"))}
-          className="group text-primary-foreground/70 flex items-center gap-2 rounded-full bg-black/20 px-4 py-1.5 text-xs transition-colors hover:bg-black/50 hover:text-white"
+          className="group flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-amber-900 shadow-sm ring-1 ring-amber-300/50 transition-all hover:bg-amber-50"
         >
-          <MagnifyingGlass className="size-4" weight="regular" aria-hidden />
+          <MagnifyingGlass className="size-4" weight="bold" aria-hidden />
           <span className="hidden text-sm sm:inline-block">Tìm kiếm</span>
-          <Kbd className="hidden border-none bg-black/30 font-sans text-white group-hover:bg-black/50 sm:inline-flex">
+          <Kbd className="hidden border-none bg-amber-100 font-sans font-bold text-amber-700 group-hover:bg-amber-200 group-hover:text-amber-950 sm:inline-flex">
             Ctrl + F
           </Kbd>
         </button>

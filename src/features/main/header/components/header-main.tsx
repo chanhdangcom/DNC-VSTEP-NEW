@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { HeaderLogoLink } from "./header-logo-link";
 import {
@@ -26,6 +26,16 @@ export function HeaderMain({
   usePathname();
   useLocationHash();
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
@@ -38,7 +48,14 @@ export function HeaderMain({
           sideRailsInset ? "home-page-rails-header" : "inset-x-0"
         )}
       >
-        <div className="hidden sm:block">
+        <div
+          className={cn(
+            "hidden origin-top overflow-hidden transition-all duration-300 ease-in-out sm:block",
+            isScrolled
+              ? "h-0 opacity-0"
+              : "h-[var(--app-header-top-height)] opacity-100"
+          )}
+        >
           <HeaderTopBar />
         </div>
 
@@ -46,15 +63,15 @@ export function HeaderMain({
           <div className="container h-full">
             <div className="relative z-[110] flex h-full items-center justify-between gap-3 lg:hidden">
               <HeaderLogoLink
-                size="lg"
+                size="xl"
                 className="max-w-[calc(100%-4rem)] min-w-0 shrink"
-                imageClassName="max-h-11 max-w-full"
+                imageClassName=" max-w-full"
               />
               <HeaderMobileMenu />
             </div>
 
             <div className="relative hidden h-full items-center justify-between gap-6 lg:flex">
-              <HeaderLogoLink size="lg" />
+              <HeaderLogoLink size="xl" />
 
               <div className="flex h-10 items-center gap-2.5">
                 <HeaderCtaPanel />

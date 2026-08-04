@@ -9,8 +9,8 @@ export function HeaderCtaPanel() {
       <Link
         href="/lien-he#dang-ky-thi"
         className={cn(
-          buttonVariants({ size: "sm" }),
-          "bg-primary hover:bg-primary/90 rounded-full px-4 text-sm font-medium text-white"
+          buttonVariants({ size: "default" }),
+          "bg-primary hover:bg-primary/90 rounded-full px-5 text-sm font-medium text-white"
         )}
       >
         Đăng ký thi
@@ -19,8 +19,8 @@ export function HeaderCtaPanel() {
       <Link
         href="/lien-he"
         className={cn(
-          buttonVariants({ variant: "outline", size: "sm" }),
-          "border-border/80 text-foreground hover:bg-muted rounded-full bg-white px-4 text-sm font-medium"
+          buttonVariants({ variant: "outline", size: "default" }),
+          "border-border/80 text-foreground hover:bg-muted rounded-full bg-white px-5 text-sm font-medium"
         )}
       >
         Liên hệ

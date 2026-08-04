@@ -13,22 +13,25 @@ type HeaderLogoLinkProps = {
 
 const logoSizeStyles: Record<
   HeaderLogoSize,
-  { image: string; separator: string; label: string }
+  { image: string; separator: string; label: string; container: string }
 > = {
   sm: {
     image: "h-9",
     separator: "h-5",
     label: "text-sm",
+    container: "h-9",
   },
   lg: {
     image: "h-12",
     separator: "h-8",
     label: "text-sm",
+    container: "h-12",
   },
   xl: {
-    image: "h-24",
+    image: "h-12 lg:h-16", // Perfectly balanced for 64px mobile and 72px desktop headers
     separator: "h-8",
     label: "text-sm",
+    container: "h-12 lg:h-16",
   },
 };
 
@@ -43,8 +46,8 @@ export function HeaderLogoLink({
     <Link
       href="/"
       className={cn(
-        "inline-flex min-w-0 items-center gap-2",
-        size === "lg" ? "h-12" : "h-9",
+        "inline-flex max-h-full min-w-0 items-center gap-2",
+        styles.container,
         className
       )}
     >
@@ -55,7 +58,7 @@ export function HeaderLogoLink({
         height={1000}
         quality={100}
         className={cn(
-          "block w-auto shrink-0 object-contain object-left",
+          "block max-h-full w-auto shrink-0 object-contain object-left",
           styles.image,
           imageClassName
         )}

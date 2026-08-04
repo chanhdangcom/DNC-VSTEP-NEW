@@ -114,6 +114,7 @@ function getCardMotionState(
       opacity: 1,
       rotate: entryRotate,
       brightness: 1,
+      saturate: 1,
       shadowOpacity: 0,
       shadowY: 0,
       zIndex: 50 - index,

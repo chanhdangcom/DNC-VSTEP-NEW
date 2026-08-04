@@ -11,7 +11,7 @@ import { AboutExamPaper } from "./about-exam-paper";
 
 export function AboutContent() {
   return (
-    <div className="mx-auto max-w-7xl space-y-12 sm:space-y-14 lg:space-y-28">
+    <div className="mx-auto space-y-12 sm:space-y-14 lg:space-y-28">
       <AboutFaqBlocks sections={aboutFaqSections} />
 
       <div className="to-primary relative left-1/2 flex w-screen -translate-x-1/2 flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#8a0000] via-[#5a0000] py-20 sm:py-24">

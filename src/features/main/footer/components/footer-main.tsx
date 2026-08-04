@@ -30,7 +30,7 @@ export function FooterMain({ className }: FooterMainProps) {
           />
           <Typography
             variant="p"
-            className="m-0 text-sm leading-relaxed font-medium text-pretty text-zinc-500"
+            className="m-0 text-base leading-relaxed font-medium text-pretty text-zinc-500"
           >
             © {new Date().getFullYear()} Trung tâm Đào tạo Chuẩn đầu ra & Phát
             triển nguồn nhân lực, Trường Đại học Nam Cần Thơ. All rights
@@ -39,76 +39,71 @@ export function FooterMain({ className }: FooterMainProps) {
         </div>
 
         {/* Columns */}
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-16">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_auto_auto] lg:gap-x-16 lg:gap-y-0">
           {/* Column 1: Trường ĐH Nam Cần Thơ */}
-          <div>
+          <div className="flex flex-col gap-4 lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
             <Typography
               variant="h4"
-              className="m-0 mb-4 text-sm tracking-wider text-zinc-900 uppercase"
+              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
             >
               {footerUniversitySection.title}
             </Typography>
 
-            <ul className="space-y-4">
-              {footerUniversitySection.contacts.map((contact, i) => (
-                <li
-                  key={i}
-                  className="space-y-1 text-sm leading-relaxed font-medium text-zinc-500"
-                >
-                  {contact.lines.map((line, j) => (
-                    <span key={j} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </li>
-              ))}
-            </ul>
+            {footerUniversitySection.contacts.map((contact, i) => (
+              <div
+                key={i}
+                className="space-y-1 text-base leading-relaxed font-medium text-zinc-500"
+              >
+                {contact.lines.map((line, j) => (
+                  <span key={j} className="block">
+                    {line}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
 
           {/* Column 2: Trung tâm */}
-          <div>
+          <div className="flex flex-col gap-4 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
             <Typography
               variant="h4"
-              className="m-0 mb-4 text-sm tracking-wider text-zinc-900 uppercase"
+              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
             >
               TT Đào Tạo & PTNNL
             </Typography>
-            <ul className="space-y-4">
-              {footerCenterSection.contacts.map((contact, i) => (
-                <li
-                  key={i}
-                  className="space-y-1 text-sm leading-relaxed font-medium text-zinc-500"
-                >
-                  {contact.lines.map((line, j) => (
-                    <span key={j} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </li>
-              ))}
-            </ul>
+            
+            {footerCenterSection.contacts.map((contact, i) => (
+              <div
+                key={i}
+                className="space-y-1 text-base leading-relaxed font-medium text-zinc-500"
+              >
+                {contact.lines.map((line, j) => (
+                  <span key={j} className="block">
+                    {line}
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
 
           {/* Column 3: Liên kết */}
-          <div>
+          <div className="flex flex-col gap-4 lg:col-start-3 lg:row-span-5 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
             <Typography
               variant="h4"
-              className="m-0 mb-4 text-sm tracking-wider text-zinc-900 uppercase"
+              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
             >
               Liên kết
             </Typography>
-            <ul className="space-y-4">
-              {footerLinkColumns.flat().map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="hover:text-primary text-sm font-medium text-zinc-500 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            
+            {footerLinkColumns.flat().map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-primary text-base font-medium text-zinc-500 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
