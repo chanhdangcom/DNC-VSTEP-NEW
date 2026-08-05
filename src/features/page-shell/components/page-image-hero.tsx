@@ -26,7 +26,7 @@ export function PageImageHero({
   imageUrl,
 }: PageImageHeroProps) {
   return (
-    <div className="site-chrome-offset relative flex min-h-[280px] flex-col justify-end overflow-hidden sm:min-h-[350px] lg:min-h-[400px]">
+    <div className="relative flex min-h-[300px] flex-col justify-end overflow-hidden sm:min-h-[360px] lg:min-h-[400px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -42,11 +42,11 @@ export function PageImageHero({
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 container mx-auto pb-10 sm:pb-16 lg:pb-20">
-        <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-4xl flex-col gap-4 duration-700">
+      <div className="relative z-10 container mx-auto py-10 sm:py-12 lg:py-16">
+        <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-3xl flex-col gap-8 duration-700">
           {/* Breadcrumb */}
           {breadcrumbs?.length ? (
-            <div className="inline-flex">
+            <div className="mb-1 inline-flex">
               <Breadcrumb>
                 <BreadcrumbList>
                   {breadcrumbs.map((item, index) => {
@@ -60,12 +60,12 @@ export function PageImageHero({
                           {item.href && !isLast ? (
                             <BreadcrumbLink
                               render={<Link href={item.href} />}
-                              className="text-xs font-medium text-white/70 transition-colors hover:text-white sm:text-sm"
+                              className="text-lg font-medium text-white/70 transition-colors hover:text-white"
                             >
                               {item.label}
                             </BreadcrumbLink>
                           ) : (
-                            <BreadcrumbPage className="text-xs font-semibold text-white sm:text-sm">
+                            <BreadcrumbPage className="text-lg font-semibold text-white">
                               {item.label}
                             </BreadcrumbPage>
                           )}
@@ -81,7 +81,7 @@ export function PageImageHero({
           {/* Title */}
           <Typography
             variant="h1"
-            className="text-4xl leading-tight font-black tracking-tight text-white drop-shadow-md sm:text-5xl md:text-6xl"
+            className="text-3xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-6xl"
           >
             {banner.title}{" "}
             {banner.titleHighlight && (
@@ -91,7 +91,7 @@ export function PageImageHero({
 
           {/* Subtitle description */}
           {banner.description && (
-            <p className="mt-2 max-w-2xl text-base leading-relaxed font-medium text-white/90 drop-shadow-sm sm:text-lg sm:leading-relaxed">
+            <p className="max-w-2xl text-base leading-relaxed text-zinc-200 drop-shadow-xs sm:text-lg sm:leading-relaxed">
               {banner.description}
             </p>
           )}

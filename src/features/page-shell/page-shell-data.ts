@@ -163,7 +163,7 @@ export const legalDocumentsPageBreadcrumbs: PageBreadcrumbItem[] = [
 ];
 
 export const CONTACT_BANNER_IMAGE = {
-  src: "/images/banner/lien-he-banner-v4.jpg",
+  src: "/images/banner/lienhe-banner.jpg",
   alt: "Trung tâm Chuẩn đầu ra Trường Đại học Nam Cần Thơ",
 } as const satisfies NonNullable<PageBannerProps["image"]>;
 

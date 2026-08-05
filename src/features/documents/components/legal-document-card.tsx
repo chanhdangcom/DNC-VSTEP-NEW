@@ -22,12 +22,12 @@ export function LegalDocumentCard({ item }: LegalDocumentCardProps) {
           "focus-visible:ring-primary/30 focus-visible:ring-2 focus-visible:outline-none"
         )}
       >
-        {/* Icon & Format Block (Left) — Icon FilePdf màu đỏ đồng bộ */}
+        {/* Icon & Format Block (Left) - Cân bằng kích thước với bên Lịch thi */}
         <div className="flex self-stretch">
-          <div className="group-hover:border-primary/30 flex h-full w-20 shrink-0 flex-col items-center justify-center rounded-xl p-2 ring-1 ring-black/6 transition-colors duration-200">
+          <div className="group-hover:border-primary/30 flex h-full w-24 shrink-0 flex-col items-center justify-center rounded-xl p-2 ring-1 ring-black/6 transition-colors duration-200">
             <FilePdf
-              className="size-8 shrink-0 text-red-600 dark:text-red-400"
-              weight="fill"
+              className="size-12 shrink-0 text-red-600 drop-shadow-sm dark:text-red-400"
+              weight="duotone"
             />
           </div>
         </div>
