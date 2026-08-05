@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     qualities: [75, 85, 90, 95, 100],
   },
+  allowedDevOrigins: ["10.10.2.113"],
   async rewrites() {
     return {
       beforeFiles: markdownPages.map((slug) => ({

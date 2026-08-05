@@ -20,12 +20,12 @@ export function ContactPage() {
       banner={contactPageBanner}
       breadcrumbs={contactPageBreadcrumbs}
     >
-      <div className="font-momo relative overflow-hidden">
-        <div className="relative z-10 mx-auto w-full px-0.5">
-          <div className="relative flex flex-col pt-0.5 lg:flex-row lg:items-start lg:justify-center">
+      <div className="font-momo">
+        <div className="relative z-10 mx-auto w-full">
+          <div className="relative flex flex-col lg:flex-row lg:items-start lg:justify-center">
             {/* Left Box (Form) */}
-            <div className="relative z-10 w-full lg:w-[65%]">
-              <Card className="border-t-primary dark:border-t-primary w-full overflow-hidden rounded-3xl border border-t-4 border-slate-200/80 bg-white shadow-xl shadow-slate-200/50 lg:mr-8 dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="w-full lg:w-[65%]">
+              <Card className="w-full rounded-3xl shadow-xl shadow-slate-200/50 lg:mr-8">
                 <CardHeader className="px-6 pt-8 pb-6 sm:px-10 sm:pt-10 sm:pb-8 lg:pr-16">
                   <CardTitle className="font-hand text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-[2.5rem] lg:leading-tight dark:text-white">
                     Hãy để lại lời nhắn cho chúng tôi
@@ -42,8 +42,8 @@ export function ContactPage() {
             </div>
 
             {/* Right Box (Info Panel) */}
-            <div className="relative z-20 mt-8 w-full lg:mt-24 lg:-ml-16 lg:w-[42%]">
-              <div className="h-full w-full rounded-[2.5rem] shadow-lg ring-1 ring-black/5">
+            <div className="mt-8 w-full lg:mt-24 lg:-ml-16 lg:w-[42%]">
+              <div className="h-full w-full rounded-[2.5rem] shadow-lg">
                 <ContactDetailsPanel />
               </div>
             </div>

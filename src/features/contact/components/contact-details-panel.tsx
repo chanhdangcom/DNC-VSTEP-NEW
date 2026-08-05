@@ -16,7 +16,7 @@ import {
 
 export function ContactDetailsPanel() {
   return (
-    <Card className="relative flex h-full w-full flex-col overflow-hidden border-none bg-blue-900 text-white shadow-2xl shadow-blue-900/20 transition-all duration-500 sm:rounded-[2rem] dark:bg-zinc-900">
+    <Card className="relative flex h-full w-full flex-col overflow-hidden border-none bg-blue-900 text-white ring-0 inset-ring-1 inset-ring-black/15 transition-all duration-500 sm:rounded-[2rem] dark:bg-zinc-900">
       {/* Decorative Background Elements */}
       <div className="pointer-events-none absolute -top-20 -right-20 size-64 rounded-full bg-white opacity-[0.03] blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 -left-20 size-80 rounded-full bg-blue-500 opacity-[0.15] blur-3xl" />
@@ -28,7 +28,7 @@ export function ContactDetailsPanel() {
         <CardTitle className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
           Thông tin liên hệ
         </CardTitle>
-        <CardDescription className="mt-2 text-base text-blue-100/90">
+        <CardDescription className="mt-2 text-base text-balance text-blue-100/90">
           Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn mọi lúc, mọi nơi.
         </CardDescription>
       </CardHeader>
@@ -68,7 +68,9 @@ export function ContactDetailsPanel() {
               Email
             </p>
             <a
-              href="mailto:vstepdhnamcantho@nctu.edu.vn"
+              href="mailto:vstepdhnamcantho@nctu.edu.vn?subject=Liên hệ từ trang web VSTEP"
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-1 block text-lg font-bold text-white transition-colors hover:text-sky-300"
             >
               vstepdhnamcantho@nctu.edu.vn
@@ -135,7 +137,7 @@ export function ContactDetailsPanel() {
             <a
               key={i}
               href="#"
-              className="group flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:ring-black/10"
+              className="group flex h-10 w-10 items-center justify-center transition-[translate,shadow] duration-300 hover:-translate-y-1"
             >
               <img
                 src={src}

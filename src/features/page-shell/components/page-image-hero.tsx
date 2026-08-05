@@ -42,7 +42,7 @@ export function PageImageHero({
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 container mx-auto py-10 sm:py-12 lg:py-16">
+      <div className="relative z-10 container mx-auto py-10 selection:bg-white! sm:py-12 lg:py-16">
         <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-3xl flex-col gap-8 duration-700">
           {/* Breadcrumb */}
           {breadcrumbs?.length ? (

@@ -47,7 +47,11 @@ export function PageHubShell({
   const imageUrl = banner.image?.src || "/images/banner/images.jfif";
 
   let art: React.ReactNode = null;
-  if (title.includes("Lịch") || title.includes("kế hoạch") || title.includes("thi")) {
+  if (
+    title.includes("Lịch") ||
+    title.includes("kế hoạch") ||
+    title.includes("thi")
+  ) {
     art = (
       <div className="relative h-[300px] w-[350px] lg:h-[360px] lg:w-[430px] xl:h-[390px] xl:w-[470px]">
         <Image
@@ -60,7 +64,9 @@ export function PageHubShell({
       </div>
     );
   } else if (title.includes("Văn bản") || title.includes("Biểu mẫu")) {
-    art = <BannerDocumentArt className="w-[240px] h-[180px] xl:w-[280px] xl:h-[215px] opacity-90 drop-shadow-md" />;
+    art = (
+      <BannerDocumentArt className="h-[180px] w-[240px] opacity-90 drop-shadow-md xl:h-[215px] xl:w-[280px]" />
+    );
   }
 
   return (
@@ -75,7 +81,11 @@ export function PageHubShell({
             imageUrl={imageUrl}
           />
         ) : (
-          <PageAnimatedHero banner={banner} breadcrumbs={breadcrumbs} art={art} />
+          <PageAnimatedHero
+            banner={banner}
+            breadcrumbs={breadcrumbs}
+            art={art}
+          />
         )}
 
         <div className="py-6 lg:py-8">
