@@ -109,7 +109,7 @@ export function AboutExamPaper({
           <div className="h-max shrink-0 lg:sticky lg:top-40 lg:col-span-5 lg:mt-16">
             <Typography
               variant="h2"
-              className="text-primary mb-4 border-none text-3xl font-bold sm:text-4xl lg:text-5xl lg:leading-tight"
+              className="text-primary mb-4 border-none text-3xl font-semibold sm:text-4xl lg:text-5xl lg:leading-tight"
             >
               Hình thức bài thi
               <br />
@@ -147,7 +147,7 @@ export function AboutExamPaper({
 
                       {/* Giant Number Background */}
                       <div className="pointer-events-none absolute -right-2 -bottom-10 z-0 transition-transform duration-700 select-none group-hover:scale-110 group-hover:-rotate-3">
-                        <span className="text-[14rem] leading-none font-black text-white/10 mix-blend-overlay">
+                        <span className="text-[14rem] leading-none font-semibold text-white/10 mix-blend-overlay">
                           0{index + 1}
                         </span>
                       </div>
@@ -160,7 +160,7 @@ export function AboutExamPaper({
                             className="size-7 text-white sm:size-8"
                           />
                         </div>
-                        <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs font-bold tracking-widest text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
+                        <div className="rounded-full bg-white/20 px-3 py-1.5 text-xs font-semibold tracking-widest text-white shadow-sm ring-1 ring-white/30 backdrop-blur-md">
                           {partName}
                         </div>
                       </div>
@@ -168,7 +168,7 @@ export function AboutExamPaper({
                       {/* Bottom: Title & Line */}
                       <div className="relative z-10 mt-12 text-left sm:mt-16">
                         <div className="mb-4 h-1 w-10 rounded-full bg-white/40 transition-all duration-500 group-hover:w-16"></div>
-                        <h4 className="text-3xl leading-tight font-extrabold text-balance text-white sm:text-4xl">
+                        <h4 className="text-3xl leading-tight font-semibold text-balance text-white sm:text-4xl">
                           {item.title}
                         </h4>
                       </div>
@@ -202,7 +202,7 @@ export function AboutExamPaper({
                               </div>
 
                               <div className="mt-0.5 flex flex-col gap-1">
-                                <strong className="text-[14px] font-extrabold tracking-wide text-zinc-900 uppercase transition-colors duration-300">
+                                <strong className="text-[14px] font-semibold tracking-wide text-zinc-900 uppercase transition-colors duration-300">
                                   {hasKeyword ? keyword : "Chi tiết"}
                                 </strong>
 
@@ -246,17 +246,17 @@ function highlightKeywords(text: string) {
   // Bold time durations (e.g. "40 phút", "60 phút")
   modified = modified.replace(
     /(\d+\s*phút)/g,
-    '<strong class="font-bold text-zinc-900">$1</strong>'
+    '<strong class="font-semibold text-zinc-900">$1</strong>'
   );
   // Bold question counts (e.g. "35 câu hỏi", "2 phần")
   modified = modified.replace(
     /(\d+\s*câu hỏi|\d+\s*phần thi|\d+\s*phần)/g,
-    '<strong class="font-bold text-zinc-900">$1</strong>'
+    '<strong class="font-semibold text-zinc-900">$1</strong>'
   );
   // Bold scores (e.g. "Thang điểm 0–10")
   modified = modified.replace(
     /(Thang điểm [0-9–\-]+)/gi,
-    '<strong class="font-bold text-zinc-900">$1</strong>'
+    '<strong class="font-semibold text-zinc-900">$1</strong>'
   );
 
   return modified;

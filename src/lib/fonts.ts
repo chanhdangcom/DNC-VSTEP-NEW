@@ -5,6 +5,7 @@ export const momoTrustSans = Momo_Trust_Sans({
   variable: "--font-momo-trust-sans",
   subsets: ["latin", "vietnamese"],
   weight: "variable",
+  adjustFontFallback: false,
 });
 
 export const geistMono = Geist_Mono({

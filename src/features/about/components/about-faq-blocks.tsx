@@ -30,7 +30,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
           <section id={vstepDef.id} className="scroll-mt-40 space-y-6">
             <Typography
               variant="h2"
-              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+              className="text-primary mb-6 border-none text-3xl font-semibold sm:text-4xl"
             >
               {vstepDef.title}
             </Typography>
@@ -56,7 +56,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
           <section id={certDef.id} className="scroll-mt-40 space-y-6">
             <Typography
               variant="h2"
-              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+              className="text-primary mb-6 border-none text-3xl font-semibold sm:text-4xl"
             >
               {certDef.title}
             </Typography>
@@ -84,7 +84,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
           <div className="space-y-4">
             <Typography
               variant="h2"
-              className="text-primary mb-6 border-none text-3xl font-bold sm:text-4xl"
+              className="text-primary mb-6 border-none text-3xl font-semibold sm:text-4xl"
             >
               {audience.title}
             </Typography>
@@ -165,7 +165,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                   <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/20 to-black/10 opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
 
                   {/* Elegant Border Overlay */}
-                  <div className="pointer-events-none absolute inset-0 z-30 rounded-3xl inset-ring-1 inset-ring-white/15 ring-1 ring-black/10" />
+                  <div className="pointer-events-none absolute inset-0 z-30 rounded-3xl ring-1 inset-ring-1 ring-black/10 inset-ring-white/15" />
 
                   {/* Floating Glassmorphism Badge */}
                   <div className="absolute top-4 left-4 z-20 flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur-md">
@@ -182,7 +182,7 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                       className="absolute -right-4 -bottom-4 z-0 size-32 -rotate-12 text-white/10 transition-transform duration-500 group-hover:scale-110"
                     />
 
-                    <h4 className="relative z-10 text-xl leading-snug font-bold whitespace-pre-line text-white drop-shadow-md sm:text-xl">
+                    <h4 className="relative z-10 text-xl leading-snug font-semibold whitespace-pre-line text-white drop-shadow-md sm:text-xl">
                       {item}
                     </h4>
                   </div>

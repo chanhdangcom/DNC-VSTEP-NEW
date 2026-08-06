@@ -42,10 +42,7 @@ export function HeaderTopBar() {
           <span className="hidden text-sm sm:inline-block">Tìm kiếm</span>
           <KbdGroup>
             <Kbd className="hidden border-none bg-amber-100 font-sans font-bold text-amber-700 group-hover:bg-amber-200 group-hover:text-amber-950 sm:inline-flex">
-              Ctrl
-            </Kbd>
-            <Kbd className="hidden border-none bg-amber-100 font-sans font-bold text-amber-700 group-hover:bg-amber-200 group-hover:text-amber-950 sm:inline-flex">
-              F
+              /
             </Kbd>
           </KbdGroup>
         </button>

@@ -12,8 +12,7 @@ export function AboutPage() {
         <PageImageHero
           imageUrl="/images/banner/gioithieu.jfif"
           banner={{
-            title: "Về Kỳ Thi",
-            titleHighlight: "VSTEP",
+            title: "Giới thiệu",
             description:
               "Kỳ thi đánh giá năng lực tiếng Anh theo Khung năng lực ngoại ngữ 6 bậc dùng cho Việt Nam, đáp ứng nhu cầu chuẩn hóa tiếng Anh cho mọi đối tượng.",
           }}

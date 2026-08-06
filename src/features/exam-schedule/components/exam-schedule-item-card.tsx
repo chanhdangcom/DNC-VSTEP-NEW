@@ -21,7 +21,7 @@ export function ExamScheduleItemCard({ item }: ExamScheduleItemCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group flex h-full gap-4 rounded-2xl bg-white p-1 shadow-md ring-1 shadow-black/5 ring-black/6",
+          "group flex h-full gap-4 rounded-2xl bg-white p-1 shadow-sm ring-1 shadow-black/2 ring-black/6",
           "transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "focus-visible:ring-primary/30 focus-visible:ring-2 focus-visible:outline-none"
         )}

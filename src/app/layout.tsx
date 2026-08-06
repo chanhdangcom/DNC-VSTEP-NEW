@@ -37,6 +37,11 @@ export default function RootLayout({
         inter.variable
       )}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Momo+Signature&family=Momo+Trust+Display&display=swap" rel="stylesheet" />
+      </head>
       <body className="min-h-full font-sans">
         <TooltipProvider>
           {children}

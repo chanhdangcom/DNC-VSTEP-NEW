@@ -24,111 +24,88 @@ export function ContactDetailsPanel() {
         <GlobeHemisphereWest size={400} weight="thin" />
       </div>
 
-      <CardHeader className="relative z-10 px-6 pt-6 pb-6 sm:px-10 sm:pt-8">
-        <CardTitle className="text-2xl font-bold tracking-tight text-white drop-shadow-sm sm:text-3xl">
+      <CardHeader className="space-y-4 p-6 sm:px-10">
+        <CardTitle className="text-4xl font-semibold">
           Thông tin liên hệ
         </CardTitle>
-        <CardDescription className="mt-2 text-base text-balance text-blue-100/90">
+
+        <CardDescription className="text-lg text-balance text-zinc-300">
           Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn mọi lúc, mọi nơi.
         </CardDescription>
       </CardHeader>
 
       {/* Contact List */}
-      <CardContent className="relative z-10 flex flex-1 flex-col justify-center gap-8 px-6 sm:px-10 lg:gap-10">
+      <CardContent className="flex flex-1 flex-col justify-center gap-6 pb-6 sm:px-10">
         {/* Address */}
-        <div className="group flex items-start gap-4 transition-all">
-          <div className="group-hover:bg-primary group-hover:ring-primary/20 flex size-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)] ring-1 ring-white/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-white group-hover:shadow-[0_8px_25px_-4px_rgba(225,29,72,0.5)]">
-            <MapPin className="size-5 transition-colors" weight="fill" />
+        <div className="flex items-start gap-4">
+          <div className="rounded-full bg-zinc-50 p-2 ring-1">
+            <MapPin className="size-6 text-blue-800" weight="fill" />
           </div>
-          <div>
-            <p className="text-sm font-bold tracking-wider text-blue-200/70 uppercase">
-              Địa chỉ
-            </p>
-            <p className="mt-1 text-lg font-bold text-white">
-              Phòng C2-14 (Khu C)
-            </p>
-            <p className="mt-0.5 text-base text-blue-200/80">
-              Trường Đại học Nam Cần Thơ
-              <br />
-              168 Nguyễn Văn Cừ nối dài, P. An Bình, Tp. Cần Thơ
-            </p>
+
+          <div className="space-y-1">
+            <p className="text-lg font-medium text-white">Địa chỉ</p>
+            <div className="text-base text-zinc-400">
+              <p>Phòng C2-14 (Khu C)</p>
+              <p>Trường Đại học Nam Cần Thơ</p>
+              <p>168 Nguyễn Văn Cừ nối dài, P. An Bình, Tp. Cần Thơ</p>
+            </div>
           </div>
         </div>
 
         {/* Email */}
-        <div className="group flex items-start gap-4 transition-all">
-          <div className="group-hover:bg-primary group-hover:ring-primary/20 flex size-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)] ring-1 ring-white/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-white group-hover:shadow-[0_8px_25px_-4px_rgba(225,29,72,0.5)]">
-            <EnvelopeSimple
-              className="size-5 transition-colors"
-              weight="fill"
-            />
+        <div className="flex items-start gap-4">
+          <div className="rounded-full bg-zinc-50 p-2 ring-1">
+            <EnvelopeSimple className="size-6 text-blue-800" weight="fill" />
           </div>
-          <div>
-            <p className="text-sm font-bold tracking-wider text-blue-200/70 uppercase">
-              Email
-            </p>
-            <a
-              href="mailto:vstepdhnamcantho@nctu.edu.vn?subject=Liên hệ từ trang web VSTEP"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 block text-lg font-bold text-white transition-colors hover:text-sky-300"
-            >
-              vstepdhnamcantho@nctu.edu.vn
-            </a>
-            <p className="mt-0.5 text-base text-blue-200/80">
-              Phản hồi trong vòng 24h
-            </p>
+          <div className="space-y-1">
+            <p className="text-lg font-medium text-white">Email</p>
+            <div className="text-base text-zinc-400">
+              <a
+                href="mailto:vstepdhnamcantho@nctu.edu.vn?subject=Liên hệ từ trang web VSTEP"
+                className="transition-colors hover:text-white"
+              >
+                vstepdhnamcantho@nctu.edu.vn
+              </a>
+              <p>Phản hồi trong vòng 24h</p>
+            </div>
           </div>
         </div>
 
         {/* Phone */}
-        <div className="group flex items-start gap-4 transition-all">
-          <div className="group-hover:bg-primary group-hover:ring-primary/20 flex size-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)] ring-1 ring-white/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-white group-hover:shadow-[0_8px_25px_-4px_rgba(225,29,72,0.5)]">
-            <Phone className="size-5 transition-colors" weight="fill" />
+        <div className="flex items-start gap-4">
+          <div className="rounded-full bg-zinc-50 p-2 ring-1">
+            <Phone className="size-6 text-blue-800" weight="fill" />
           </div>
-          <div className="grid gap-x-8 gap-y-2 sm:grid-cols-2">
-            <div>
-              <p className="text-sm font-bold tracking-wider text-blue-200/70 uppercase">
-                Tổng đài
-              </p>
-              <p className="mt-1 text-lg font-bold tracking-tight text-white tabular-nums">
-                02923 798 789
-              </p>
-            </div>
-            <div>
-              <p className="text-sm font-bold tracking-wider text-blue-200/70 uppercase">
-                Hotline VSTEP
-              </p>
-              <p className="mt-1 text-lg font-bold tracking-tight text-white tabular-nums">
-                0901 012 365
-              </p>
+          <div className="space-y-1">
+            <p className="text-lg font-medium text-white">Điện thoại</p>
+            <div className="text-base text-zinc-400">
+              <p>Tổng đài: 02923 798 789</p>
+              <p>Hotline VSTEP: 0901 012 365</p>
             </div>
           </div>
         </div>
 
         {/* Working Hours */}
-        <div className="group flex items-start gap-4 transition-all">
-          <div className="group-hover:bg-primary group-hover:ring-primary/20 flex size-12 shrink-0 items-center justify-center rounded-full bg-white/10 text-white shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)] ring-1 ring-white/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-white group-hover:shadow-[0_8px_25px_-4px_rgba(225,29,72,0.5)]">
-            <Clock className="size-5 transition-colors" weight="fill" />
+        <div className="flex items-start gap-4">
+          <div className="rounded-full bg-zinc-50 p-2 ring-1">
+            <Clock className="size-6 text-blue-800" weight="fill" />
           </div>
-          <div>
-            <p className="text-sm font-bold tracking-wider text-blue-200/70 uppercase">
-              Giờ làm việc
-            </p>
-            <p className="mt-1 text-lg font-bold text-white">Thứ 2 - Thứ 6</p>
-            <p className="mt-0.5 text-base text-blue-200/80">
-              Sáng: 07:30 - 11:30 | Chiều: 13:00 - 17:00
-            </p>
+          <div className="space-y-1">
+            <p className="text-lg font-medium text-white">Giờ làm việc</p>
+            <div className="text-base text-zinc-400">
+              <p>Thứ 2 - Thứ 6</p>
+              <p>Sáng: 07:30 - 11:30</p>
+              <p>Chiều: 13:00 - 17:00</p>
+            </div>
           </div>
         </div>
       </CardContent>
 
       {/* Social Media Footer */}
-      <CardFooter className="relative z-10 mt-6 flex flex-col border-t border-white/10 px-6 pt-6 pb-6 sm:px-10 sm:pb-8">
-        <p className="mb-4 text-center text-sm font-semibold tracking-wider text-blue-200/70 uppercase">
-          Kết nối với chúng tôi
-        </p>
-        <div className="flex flex-wrap justify-center gap-5">
+      <CardFooter className="flex flex-col space-y-4 border-t border-white/10">
+        <p className="text-lg font-medium text-white">Kết nối với chúng tôi</p>
+
+        <div className="flex flex-wrap justify-center gap-4">
           {[
             "/images/banner/app-icon/200x200bb-75.webp",
             "/images/banner/app-icon/200x200bb-75 (1).webp",

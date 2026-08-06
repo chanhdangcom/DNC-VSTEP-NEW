@@ -26,7 +26,7 @@ export function PageImageHero({
   imageUrl,
 }: PageImageHeroProps) {
   return (
-    <div className="relative flex min-h-[300px] flex-col justify-end overflow-hidden sm:min-h-[360px] lg:min-h-[400px]">
+    <div className="relative flex min-h-[340px] flex-col justify-end overflow-hidden sm:min-h-[400px] lg:min-h-[440px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -53,19 +53,17 @@ export function PageImageHero({
                     const isLast = index === breadcrumbs.length - 1;
                     return (
                       <React.Fragment key={`${item.label}-${index}`}>
-                        {index > 0 && (
-                          <BreadcrumbSeparator className="text-white/40" />
-                        )}
-                        <BreadcrumbItem>
+                        {index > 0 && <BreadcrumbSeparator className="" />}
+                        <BreadcrumbItem className="text-lg">
                           {item.href && !isLast ? (
                             <BreadcrumbLink
                               render={<Link href={item.href} />}
-                              className="text-lg font-medium text-white/70 transition-colors hover:text-white"
+                              className="text-zinc-400"
                             >
                               {item.label}
                             </BreadcrumbLink>
                           ) : (
-                            <BreadcrumbPage className="text-lg font-semibold text-white">
+                            <BreadcrumbPage className="text-muted">
                               {item.label}
                             </BreadcrumbPage>
                           )}
@@ -81,19 +79,20 @@ export function PageImageHero({
           {/* Title */}
           <Typography
             variant="h1"
-            className="text-3xl font-extrabold tracking-tight text-white drop-shadow-md sm:text-4xl md:text-5xl lg:text-6xl"
+            className="font-semibold text-zinc-100 lg:text-5xl"
           >
-            {banner.title}{" "}
-            {banner.titleHighlight && (
-              <span className="text-amber-400">{banner.titleHighlight}</span>
-            )}
+            {banner.title}
           </Typography>
 
           {/* Subtitle description */}
+
           {banner.description && (
-            <p className="max-w-2xl text-base leading-relaxed text-zinc-200 drop-shadow-xs sm:text-lg sm:leading-relaxed">
+            <Typography
+              variant="lead"
+              className="text-lg text-balance text-zinc-400"
+            >
               {banner.description}
-            </p>
+            </Typography>
           )}
         </div>
       </div>

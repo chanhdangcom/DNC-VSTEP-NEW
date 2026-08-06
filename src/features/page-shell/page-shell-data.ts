@@ -11,7 +11,7 @@ import type { PageBannerProps, PageBreadcrumbItem } from "./types";
 export { PAGE_BANNER_COLLAGE };
 
 export const PAGE_BANNER_IMAGE = {
-  src: "/images/banner/images.jfif",
+  src: "/images/banner/lich-thi-banner-bright.jpg",
   alt: "Banner Giới thiệu VSTEP Trường Đại học Nam Cần Thơ",
 } as const satisfies NonNullable<PageBannerProps["image"]>;
 
@@ -42,8 +42,8 @@ export const aboutPageBreadcrumbs: PageBreadcrumbItem[] = [
 ];
 
 export const EXAM_SCHEDULE_BANNER_IMAGE = {
-  src: "/images/banner/dnc-building-c.jpg",
-  alt: "Dãy giảng đường & phòng thi VSTEP (Khu C) Trường Đại học Nam Cần Thơ",
+  src: "/images/banner/lich-thi-banner-bright.jpg",
+  alt: "Lịch thi VSTEP",
 } as const satisfies NonNullable<PageBannerProps["image"]>;
 
 export const examSchedulePageBanner: PageBannerProps = {
@@ -61,7 +61,7 @@ export const examSchedulePageBreadcrumbs: PageBreadcrumbItem[] = [
 ];
 
 export const EXAM_REVIEW_BANNER_IMAGE = {
-  src: "/images/banner/dnc-main-building.jpg",
+  src: "/images/banner/lich-thi-banner-bright.jpg",
   alt: "Tòa nhà chính Trường Đại học Nam Cần Thơ",
 } as const satisfies NonNullable<PageBannerProps["image"]>;
 
@@ -93,7 +93,7 @@ export const examReviewPageBreadcrumbs: PageBreadcrumbItem[] = [
 ];
 
 export const EXAM_YEARLY_PLAN_BANNER_IMAGE = {
-  src: "/images/banner/dnc-aerial-campus.jpg",
+  src: "/images/banner/lich-thi-banner-bright.jpg",
   alt: "Toàn cảnh khuôn viên Trường Đại học Nam Cần Thơ từ trên cao",
 } as const satisfies NonNullable<PageBannerProps["image"]>;
 
@@ -170,7 +170,7 @@ export const CONTACT_BANNER_IMAGE = {
 export const contactPageBanner: PageBannerProps = {
   image: CONTACT_BANNER_IMAGE,
   images: CONTACT_COLLAGE,
-  title: "Liên hệ",
+  title: "Thông tin liên hệ",
   description:
     "Kết nối với Trung tâm Chuẩn đầu ra — địa chỉ, điện thoại, Zalo và email hỗ trợ thí sinh VSTEP.",
 };

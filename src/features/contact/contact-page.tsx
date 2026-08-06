@@ -21,28 +21,29 @@ export function ContactPage() {
       breadcrumbs={contactPageBreadcrumbs}
     >
       <div className="font-momo">
-        <div className="relative z-10 mx-auto w-full">
-          <div className="relative flex flex-col lg:flex-row lg:items-start lg:justify-center">
+        <div className="mx-auto w-full">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center">
             {/* Left Box (Form) */}
             <div className="w-full lg:w-[65%]">
               <Card className="w-full rounded-3xl shadow-xl shadow-slate-200/50 lg:mr-8">
-                <CardHeader className="px-6 pt-8 pb-6 sm:px-10 sm:pt-10 sm:pb-8 lg:pr-16">
-                  <CardTitle className="font-hand text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl lg:text-[2.5rem] lg:leading-tight dark:text-white">
-                    Hãy để lại lời nhắn cho chúng tôi
+                <CardHeader className="max-w-2xl space-y-4 px-6 py-8 sm:px-10 sm:pt-10 lg:pr-16">
+                  <CardTitle className="text-4xl lg:font-semibold">
+                    Gửi thông tin cho chúng tôi
                   </CardTitle>
-                  <CardDescription className="mt-3 max-w-xl text-base leading-relaxed text-zinc-500 sm:text-lg dark:text-zinc-400">
+
+                  <CardDescription className="text-lg">
                     Bất kỳ bạn cần tư vấn khóa học hay giải đáp thắc mắc, Đội
                     ngũ của VSTEP luôn sẵn sàng lắng nghe.
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="px-6 pb-8 sm:px-10 sm:pb-10 lg:pr-24">
+                <CardContent className="px-8 pb-6 lg:pr-24">
                   <ContactForm />
                 </CardContent>
               </Card>
             </div>
 
             {/* Right Box (Info Panel) */}
-            <div className="mt-8 w-full lg:mt-24 lg:-ml-16 lg:w-[42%]">
+            <div className="mt-8 w-full lg:mt-0 lg:-ml-16 lg:w-[42%]">
               <div className="h-full w-full rounded-[2.5rem] shadow-lg">
                 <ContactDetailsPanel />
               </div>

@@ -21,39 +21,19 @@ export function FooterMain({ className }: FooterMainProps) {
       )}
     >
       <div className="relative z-10 container mx-auto flex flex-col items-center gap-16 px-4 lg:flex-row lg:justify-center lg:gap-32">
-        {/* Brand & Copyright */}
-        <div className="flex max-w-sm flex-col space-y-6">
-          <HeaderLogoLink
-            size="xl"
-            className="min-w-0 shrink"
-            imageClassName="max-w-full"
-          />
-          <Typography
-            variant="p"
-            className="m-0 text-base leading-relaxed font-medium text-pretty text-zinc-500"
-          >
-            © {new Date().getFullYear()} Trung tâm Đào tạo Chuẩn đầu ra & Phát
-            triển nguồn nhân lực, Trường Đại học Nam Cần Thơ. All rights
-            reserved.
-          </Typography>
-        </div>
-
         {/* Columns */}
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[auto_auto_auto_auto_auto] lg:gap-x-16 lg:gap-y-0">
           {/* Column 1: Trường ĐH Nam Cần Thơ */}
           <div className="flex flex-col gap-4 lg:col-start-1 lg:row-span-4 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
             <Typography
               variant="h4"
-              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
+              className="text-primary text-balance uppercase"
             >
               {footerUniversitySection.title}
             </Typography>
 
             {footerUniversitySection.contacts.map((contact, i) => (
-              <div
-                key={i}
-                className="space-y-1 text-base leading-relaxed font-medium text-zinc-500"
-              >
+              <div key={i} className="text-muted-foreground">
                 {contact.lines.map((line, j) => (
                   <span key={j} className="block">
                     {line}
@@ -65,18 +45,12 @@ export function FooterMain({ className }: FooterMainProps) {
 
           {/* Column 2: Trung tâm */}
           <div className="flex flex-col gap-4 lg:col-start-2 lg:row-span-4 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
-            <Typography
-              variant="h4"
-              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
-            >
+            <Typography variant="h4" className="text-primary uppercase">
               TT Đào Tạo & PTNNL
             </Typography>
-            
+
             {footerCenterSection.contacts.map((contact, i) => (
-              <div
-                key={i}
-                className="space-y-1 text-base leading-relaxed font-medium text-zinc-500"
-              >
+              <div key={i} className="text-muted-foreground">
                 {contact.lines.map((line, j) => (
                   <span key={j} className="block">
                     {line}
@@ -88,22 +62,21 @@ export function FooterMain({ className }: FooterMainProps) {
 
           {/* Column 3: Liên kết */}
           <div className="flex flex-col gap-4 lg:col-start-3 lg:row-span-5 lg:row-start-1 lg:grid lg:grid-rows-subgrid lg:gap-y-4">
-            <Typography
-              variant="h4"
-              className="m-0 text-base tracking-wider text-zinc-900 uppercase"
-            >
+            <Typography variant="h4" className="text-primary uppercase">
               Liên kết
             </Typography>
-            
-            {footerLinkColumns.flat().map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:text-primary text-base font-medium text-zinc-500 transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+
+            <div className="grid grid-cols-2 gap-4">
+              {footerLinkColumns.flat().map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-muted-foreground gap-4 hover:underline"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

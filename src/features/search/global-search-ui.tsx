@@ -18,8 +18,12 @@ export function GlobalSearchUI() {
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      // Ctrl+F or Cmd+F for Command Palette
-      if (e.key === "f" && (e.metaKey || e.ctrlKey)) {
+      // Use "/" to open search, but ignore if typing in an input or textarea
+      if (
+        e.key === "/" &&
+        (e.target as HTMLElement).tagName !== "INPUT" &&
+        (e.target as HTMLElement).tagName !== "TEXTAREA"
+      ) {
         e.preventDefault();
         setOpen((open) => !open);
       }
