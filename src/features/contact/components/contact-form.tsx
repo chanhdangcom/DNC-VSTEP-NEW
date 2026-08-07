@@ -12,7 +12,14 @@ import {
   InputGroupInput,
   InputGroupTextarea,
 } from "@/components/ui/input-group";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Field,
   FieldError,
@@ -186,62 +193,39 @@ export function ContactForm() {
             <FieldError>{errors.email}</FieldError>
           </Field>
 
-          <Field data-invalid={!!errors.country}>
-            <FieldLabel htmlFor="country" className="text-base">
-              Quốc gia / Tỉnh thành <span className="text-primary">*</span>
+          {/* Type of Inquiry (Pills) */}
+          <Field>
+            <FieldLabel id="inquiry-type-label" className="text-base">
+              Loại yêu cầu
             </FieldLabel>
-            <InputGroup className="h-12 rounded-xl">
-              <InputGroupAddon align="inline-start" className="">
-                <MapPin className="text-muted-foreground size-5" />
-              </InputGroupAddon>
-              <InputGroupInput
-                id="country"
-                placeholder="Cần Thơ, Việt Nam"
-                value={values.country}
-                onChange={(e) => setField("country", e.target.value)}
-                className="text-base"
-                aria-invalid={!!errors.country}
-              />
-            </InputGroup>
-            <FieldError>{errors.country}</FieldError>
+
+            <Select
+              value={values.subject}
+
+              onValueChange={(val) => {
+                if (val) setField("subject", val);
+              }}
+            >
+              <SelectTrigger
+                id="subject"
+                aria-labelledby="inquiry-type-label"
+                className="!h-12 rounded-xl"
+              >
+                <SelectValue placeholder="Chọn loại yêu cầu" />
+              </SelectTrigger>
+
+              <SelectContent className="rounded-xl">
+                <SelectGroup>
+                  {subjects.map((sub) => (
+                    <SelectItem key={sub} value={sub}>
+                      {sub}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </Field>
         </div>
-
-        {/* Type of Inquiry (Pills) */}
-        <Field>
-          <FieldLabel id="inquiry-type-label" className="text-base">
-            Loại yêu cầu
-          </FieldLabel>
-
-          <ToggleGroup
-            value={values.subject ? [values.subject] : []}
-            onValueChange={(val) => {
-              if (val.length > 0) setField("subject", val[0]);
-            }}
-            className=""
-            aria-labelledby="inquiry-type-label"
-          >
-            {subjects.map((sub) => {
-              const isActive = values.subject === sub;
-
-              return (
-                <ToggleGroupItem
-                  key={sub}
-                  value={sub}
-                  variant="outline"
-                  className={cn(
-                    "rounded-xl",
-                    isActive
-                      ? "bg-primary/10 text-primary ring-primary/60 ring-2"
-                      : ""
-                  )}
-                >
-                  {sub}
-                </ToggleGroupItem>
-              );
-            })}
-          </ToggleGroup>
-        </Field>
 
         {/* Message */}
         <Field data-invalid={!!errors.message} className="flex flex-col">

@@ -16,7 +16,7 @@ export function ExamScheduleGrid({
   return (
     <div
       className={cn(
-        "ring-primary/40 grid grid-cols-1 overflow-hidden rounded-xl bg-white/40 shadow-lg ring-1",
+        "ring-primary/40 grid grid-cols-1 overflow-hidden bg-white/40 shadow-lg ring-1",
         columns.length > 1 && "lg:grid-cols-2"
       )}
     >

@@ -36,7 +36,7 @@ function BenefitCard({ card, index }: BenefitCardProps) {
         "rounded-[1.35rem] bg-white text-zinc-900",
         "",
         "",
-        "h-full pt-6 pb-2 sm:rounded-2xl",
+        "h-full pt-6 pb-8 sm:rounded-2xl",
         "lg:col-span-2",
         index === 3 && "lg:col-start-2"
       )}

@@ -17,7 +17,7 @@ export function YearlyPlanCard({ item }: YearlyPlanCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group ring-primary/40 bg-background/55 relative flex h-full flex-col overflow-hidden rounded-xl shadow-sm ring-1",
+          "group ring-primary/40 bg-background/55 relative flex h-full flex-col overflow-hidden shadow-sm ring-1",
           "origin-center transform-gpu backface-hidden",
           "transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)]",
           "will-change-transform",

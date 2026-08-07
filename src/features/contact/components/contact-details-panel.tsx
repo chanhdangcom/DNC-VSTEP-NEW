@@ -16,7 +16,7 @@ import {
 
 export function ContactDetailsPanel() {
   return (
-    <Card className="relative flex h-full w-full flex-col overflow-hidden border-none bg-blue-900 text-white ring-0 inset-ring-1 inset-ring-black/15 transition-all duration-500 sm:rounded-[2rem] dark:bg-zinc-900">
+    <Card className="relative flex h-full w-full flex-col overflow-hidden rounded-[2rem] border-none bg-blue-900 text-white ring-0 inset-ring-1 inset-ring-black/15 transition-all duration-500 dark:bg-zinc-900">
       {/* Decorative Background Elements */}
       <div className="pointer-events-none absolute -top-20 -right-20 size-64 rounded-full bg-white opacity-[0.03] blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 -left-20 size-80 rounded-full bg-blue-500 opacity-[0.15] blur-3xl" />
@@ -44,7 +44,7 @@ export function ContactDetailsPanel() {
 
           <div className="space-y-1">
             <p className="text-lg font-medium text-white">Địa chỉ</p>
-            <div className="text-base text-zinc-400">
+            <div className="text-base text-zinc-300">
               <p>Phòng C2-14 (Khu C)</p>
               <p>Trường Đại học Nam Cần Thơ</p>
               <p>168 Nguyễn Văn Cừ nối dài, P. An Bình, Tp. Cần Thơ</p>
@@ -62,10 +62,11 @@ export function ContactDetailsPanel() {
             <div className="text-base text-zinc-400">
               <a
                 href="mailto:vstepdhnamcantho@nctu.edu.vn?subject=Liên hệ từ trang web VSTEP"
-                className="transition-colors hover:text-white"
+                className="text-zinc-300 transition-colors"
               >
                 vstepdhnamcantho@nctu.edu.vn
               </a>
+
               <p>Phản hồi trong vòng 24h</p>
             </div>
           </div>
@@ -79,8 +80,14 @@ export function ContactDetailsPanel() {
           <div className="space-y-1">
             <p className="text-lg font-medium text-white">Điện thoại</p>
             <div className="text-base text-zinc-400">
-              <p>Tổng đài: 02923 798 789</p>
-              <p>Hotline VSTEP: 0901 012 365</p>
+              <p>
+                Tổng đài: <span className="text-zinc-300">02923 798 789</span>
+              </p>
+
+              <p>
+                Hotline VSTEP:{" "}
+                <span className="text-zinc-300">0901 012 365</span>
+              </p>
             </div>
           </div>
         </div>
@@ -93,15 +100,19 @@ export function ContactDetailsPanel() {
           <div className="space-y-1">
             <p className="text-lg font-medium text-white">Giờ làm việc</p>
             <div className="text-base text-zinc-400">
-              <p>Thứ 2 - Thứ 6</p>
-              <p>Sáng: 07:30 - 11:30</p>
-              <p>Chiều: 13:00 - 17:00</p>
+              <p className="text-zinc-300">Thứ 2 - Thứ 6</p>
+              <p>
+                Sáng: <span className="text-zinc-300">07:30 - 11:30</span>
+              </p>
+              <p>
+                Chiều: <span className="text-zinc-300">13:00 - 17:00</span>
+              </p>
             </div>
           </div>
         </div>
       </CardContent>
 
-      {/* Social Media Footer */}
+      {/* Social Media Footer
       <CardFooter className="flex flex-col space-y-4 border-t border-white/10">
         <p className="text-lg font-medium text-white">Kết nối với chúng tôi</p>
 
@@ -124,7 +135,7 @@ export function ContactDetailsPanel() {
             </a>
           ))}
         </div>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 }

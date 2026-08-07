@@ -143,10 +143,12 @@ export function AboutFaqBlocks({ sections }: AboutFaqBlocksProps) {
                 <div
                   key={item}
                   className={cn(
-                    "group relative flex min-h-[240px] w-full flex-col justify-between overflow-hidden rounded-3xl bg-zinc-900 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl sm:min-h-[280px] lg:min-h-0",
+                    "group relative flex min-h-[240px] w-full flex-col justify-between overflow-hidden rounded-3xl bg-zinc-900 shadow-sm duration-300 sm:min-h-[280px] lg:min-h-0",
                     bentoClass
                   )}
                 >
+                  <div className="absolute inset-0 rounded-3xl inset-ring ring-black/10" />
+
                   {/* Absolute Fill Image Area */}
                   <div className="absolute inset-0 z-0">
                     <Image

@@ -16,7 +16,7 @@ export function AboutContent() {
 
       <div className="to-primary relative left-1/2 flex w-screen -translate-x-1/2 flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#8a0000] via-[#5a0000] py-20 sm:py-24">
         {/* ── Họa tiết trang trí phá cách: Typography & Diagonal Lines ── */}
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
           {/* Chữ VSTEP khổng lồ mờ nhạt (Watermark) */}
           <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none">
             <span className="pointer-events-none text-[20rem] leading-none font-black tracking-tighter text-white/[0.02] md:text-[30rem] lg:text-[40rem]">
@@ -30,7 +30,7 @@ export function AboutContent() {
           <div className="pointer-events-none absolute top-[40%] -right-[5%] h-[150%] w-[6px] rotate-[35deg] bg-white/[0.02] blur-[2px]" />
         </div>
 
-        <div className="relative z-50 mx-auto w-full">
+        <div className="mx-auto w-full">
           <AboutFrameworkLadder
             id={aboutFrameworkLadder.id}
             title={aboutFrameworkLadder.title}

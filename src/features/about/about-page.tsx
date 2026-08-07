@@ -18,7 +18,8 @@ export function AboutPage() {
           }}
           breadcrumbs={aboutPageBreadcrumbs}
         />
-        <div className="container py-8 lg:py-12">
+
+        <div className="container py-8 lg:py-16">
           <AboutContent />
         </div>
       </main>

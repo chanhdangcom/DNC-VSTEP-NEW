@@ -48,7 +48,7 @@ export function PageHubShell({
         />
 
         <div className="py-6 lg:py-16">
-          <div className="container px-4">
+          <div className="container">
             {sidebar ? (
               <div className="flex flex-col gap-4 sm:gap-6 lg:grid lg:grid-cols-[minmax(0,16.5rem)_minmax(0,1fr)] lg:items-stretch lg:gap-8 xl:grid-cols-[minmax(0,17.5rem)_minmax(0,1fr)]">
                 <div className="relative min-h-0">
