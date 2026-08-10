@@ -1,7 +1,12 @@
 "use client";
 
-import { ArrowDownAZ, Search } from "lucide-react";
-import { cn } from "@/lib/utils";
+import {
+  Search,
+  GraduationCap,
+  BookOpenText,
+  Library,
+  ArrowDownUp,
+} from "lucide-react";
 import type { V2ExamScheduleType } from "./exam-schedule-v2-page";
 import type { ExamScheduleDateSortValue } from "../../utils/filter-exam-schedule";
 import { examScheduleDateSortOptions } from "../../utils/filter-exam-schedule";
@@ -13,19 +18,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   InputGroup,
   InputGroupInput,
   InputGroupAddon,
-  InputGroupText,
+  InputGroupButton,
 } from "@/components/ui/input-group";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
-const TYPES: V2ExamScheduleType[] = [
-  "Lịch thi",
-  "Thông báo ôn thi",
-  "Kế hoạch năm",
-];
+const TYPES = [
+  { value: "Lịch thi", icon: GraduationCap },
+  { value: "Thông báo ôn thi", icon: BookOpenText },
+  { value: "Kế hoạch năm", icon: Library },
+] as const;
 
 type ExamScheduleV2FiltersProps = {
   query: string;
@@ -45,69 +51,105 @@ export function ExamScheduleV2Filters({
   onDateSortChange,
 }: ExamScheduleV2FiltersProps) {
   return (
-    <div className="flex w-full flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-      {/* Left Side: Type Toggle (Tabs) */}
-      <Tabs
-        value={type}
-        onValueChange={(val) => onTypeChange(val as V2ExamScheduleType)}
-        className="w-full max-w-full shrink-0 xl:w-auto"
-      >
-        <TabsList className="h-11 w-full [scrollbar-width:none] justify-start overflow-x-auto overflow-y-hidden [-ms-overflow-style:none] sm:w-auto [&::-webkit-scrollbar]:hidden">
-          {TYPES.map((t) => (
-            <TabsTrigger
-              key={t}
-              value={t}
-              className="data-active:text-primary hover:text-primary shrink-0 px-5 text-sm"
-            >
-              {t}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      </Tabs>
+    <div className="relative z-10 flex w-full flex-col items-center overflow-hidden rounded-2xl bg-linear-to-t from-zinc-50 to-zinc-200/40 p-4 backdrop-blur-xl md:p-8">
+      <div className="z-10 flex w-full flex-col gap-4 md:flex-row md:items-center md:gap-6">
+        {/* Cột 1: Thanh tìm kiếm */}
+        <div className="flex w-full flex-[2] flex-col space-y-2">
+          <Label className="text-muted-foreground ml-1 text-sm font-medium">
+            Thông tin tìm kiếm
+          </Label>
+          <div className="relative w-full">
+            <Search
+              size={20}
+              className="text-primary absolute top-1/2 left-4 -translate-y-1/2"
+            />
+            <Input
+              type="text"
+              value={query}
+              onChange={(e) => onQueryChange(e.target.value)}
+              placeholder="Tìm kiếm lịch thi, thông báo, kế hoạch..."
+              className="focus-visible:ring-primary/20 h-[52px] w-full rounded-xl border-none bg-white pr-4 pl-[44px] text-base font-medium text-zinc-900 shadow-sm ring-1 ring-black/5 transition-all placeholder:text-zinc-400 focus-visible:ring-2"
+            />
+          </div>
+        </div>
 
-      {/* Right Side: Search Input & Sort Select */}
-      <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center xl:w-auto">
-        <InputGroup className="w-full sm:w-[300px] lg:w-[400px]">
-          <InputGroupInput
-            type="text"
-            value={query}
-            onChange={(e) => onQueryChange(e.target.value)}
-            placeholder="Tìm kiếm kỳ thi, khóa ôn..."
-          />
-          <InputGroupAddon align="inline-end">
-            <InputGroupText>
-              <Search size={16} strokeWidth={2} className="text-primary" />
-            </InputGroupText>
-          </InputGroupAddon>
-        </InputGroup>
+        {/* Cột 2: Select Danh mục */}
+        <div className="flex w-full flex-1 flex-col space-y-2">
+          <Label className="text-muted-foreground ml-1 text-sm font-medium">
+            Danh mục
+          </Label>
+          <Select
+            value={type}
+            onValueChange={(val) => onTypeChange(val as V2ExamScheduleType)}
+          >
+            <SelectTrigger className="focus:ring-primary/20 mb-0 !h-[52px] w-full rounded-xl border-none bg-white px-4 text-sm font-medium text-zinc-800 shadow-sm ring-1 ring-black/5 hover:bg-zinc-50 focus:ring-2">
+              <SelectValue placeholder="Chọn danh mục">
+                <div className="flex items-center gap-2">
+                  {(() => {
+                    const selectedType = TYPES.find((t) => t.value === type);
+                    const Icon = selectedType?.icon || GraduationCap;
+                    return <Icon size={20} className="text-primary" />;
+                  })()}
+                  <span className="truncate">{type}</span>
+                </div>
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent className="rounded-xl" align="start">
+              <SelectGroup>
+                {TYPES.map((t) => {
+                  return (
+                    <SelectItem
+                      key={t.value}
+                      value={t.value}
+                      className="cursor-pointer rounded-lg py-3 text-sm font-medium"
+                    >
+                      {t.value}
+                    </SelectItem>
+                  );
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
 
-        <Select
-          value={dateSort}
-          onValueChange={(v) =>
-            onDateSortChange(v as ExamScheduleDateSortValue)
-          }
-        >
-          <SelectTrigger className="w-full sm:w-48">
-            <ArrowDownAZ className="text-primary mr-2" size={16} />
-            <SelectValue placeholder="Lọc theo ngày...">
-              {examScheduleDateSortOptions.find(opt => opt.value === dateSort)?.label ?? "Lọc theo ngày..."}
-            </SelectValue>
-          </SelectTrigger>
-
-          <SelectContent className="">
-            <SelectGroup>
-              {examScheduleDateSortOptions.map((opt) => (
-                <SelectItem
-                  key={opt.value}
-                  value={opt.value}
-                  className="rounded-lg"
-                >
-                  {opt.label}
-                </SelectItem>
-              ))}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        {/* Cột 3: Sắp xếp */}
+        <div className="flex w-full flex-1 flex-col space-y-2">
+          <Label className="text-muted-foreground ml-1 text-sm font-medium">
+            Sắp xếp
+          </Label>
+          <Select
+            value={dateSort}
+            onValueChange={(v) =>
+              onDateSortChange(v as ExamScheduleDateSortValue)
+            }
+          >
+            <SelectTrigger className="focus:ring-primary/20 mb-0 !h-[52px] w-full rounded-xl border-none bg-white px-4 text-sm font-medium text-zinc-800 shadow-sm ring-1 ring-black/5 hover:bg-zinc-50 focus:ring-2">
+              <SelectValue placeholder="Sắp xếp">
+                <div className="flex items-center gap-2">
+                  <ArrowDownUp size={20} className="text-primary" />
+                  <span className="truncate">
+                    {examScheduleDateSortOptions.find(
+                      (opt) => opt.value === dateSort
+                    )?.label ?? "Sắp xếp"}
+                  </span>
+                </div>
+              </SelectValue>
+            </SelectTrigger>
+            <SelectContent className="rounded-xl" align="end">
+              <SelectGroup>
+                {examScheduleDateSortOptions.map((opt) => (
+                  <SelectItem
+                    key={opt.value}
+                    value={opt.value}
+                    className="cursor-pointer rounded-lg py-3 text-sm font-medium"
+                  >
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
     </div>
   );

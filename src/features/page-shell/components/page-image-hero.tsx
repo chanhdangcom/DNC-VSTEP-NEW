@@ -37,13 +37,13 @@ export function PageImageHero({
           priority
         />
 
-        {/* Dark linear gradients focused tightly on the left side to highlight text */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-950/80 via-40% to-transparent to-70%" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
+        {/* Standard Shadcn Dark Fade */}
+        <div className="absolute inset-0 bg-zinc-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/50 to-transparent" />
       </div>
 
-      <div className="relative z-10 container mx-auto py-10 selection:bg-white! sm:py-12 lg:py-16">
-        <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-3xl flex-col gap-8 duration-700">
+      <div className="relative z-10 container mx-auto py-10 sm:py-12 lg:py-16">
+        <div className="animate-in fade-in slide-in-from-bottom-4 flex max-w-3xl flex-col gap-6 duration-700">
           {/* Breadcrumb */}
           {breadcrumbs?.length ? (
             <div className="mb-1 inline-flex">
@@ -53,17 +53,19 @@ export function PageImageHero({
                     const isLast = index === breadcrumbs.length - 1;
                     return (
                       <React.Fragment key={`${item.label}-${index}`}>
-                        {index > 0 && <BreadcrumbSeparator className="" />}
+                        {index > 0 && (
+                          <BreadcrumbSeparator className="text-zinc-500" />
+                        )}
                         <BreadcrumbItem className="text-lg">
                           {item.href && !isLast ? (
                             <BreadcrumbLink
                               render={<Link href={item.href} />}
-                              className="text-zinc-400"
+                              className="text-zinc-400 hover:text-zinc-100"
                             >
                               {item.label}
                             </BreadcrumbLink>
                           ) : (
-                            <BreadcrumbPage className="text-muted">
+                            <BreadcrumbPage className="font-medium text-zinc-200">
                               {item.label}
                             </BreadcrumbPage>
                           )}
@@ -79,17 +81,16 @@ export function PageImageHero({
           {/* Title */}
           <Typography
             variant="h1"
-            className="font-semibold text-zinc-100 lg:text-5xl"
+            className="font-bold tracking-tight text-zinc-100 lg:text-5xl"
           >
             {banner.title}
           </Typography>
 
           {/* Subtitle description */}
-
           {banner.description && (
             <Typography
               variant="lead"
-              className="text-lg text-balance text-zinc-400"
+              className="text-lg text-balance text-zinc-300"
             >
               {banner.description}
             </Typography>

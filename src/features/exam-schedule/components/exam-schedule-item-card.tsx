@@ -21,7 +21,7 @@ export function ExamScheduleItemCard({ item }: ExamScheduleItemCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group flex h-full gap-4 rounded-2xl bg-white p-1 shadow-sm ring-1 ring-black/3",
+          "group flex h-full gap-4 rounded-2xl bg-white p-1 shadow-xs ring-1 ring-black/3",
           "transition-all duration-300 ease-out hover:shadow-md",
           "focus-visible:ring-primary focus-visible:ring-2 focus-visible:outline-none"
         )}
@@ -81,7 +81,7 @@ export function FeaturedExamScheduleCard({ item }: ExamScheduleItemCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group relative flex h-full gap-4 overflow-hidden rounded-2xl bg-white p-1 shadow-sm ring-1 shadow-black/5 ring-black/3"
+          "group relative flex h-full gap-4 overflow-hidden rounded-2xl bg-white p-1 shadow-xs ring-1 shadow-black/5 ring-black/3"
         )}
       >
         {/* Corner ribbon — perfectly centered on the diagonal */}
@@ -115,7 +115,7 @@ export function FeaturedExamScheduleCard({ item }: ExamScheduleItemCardProps) {
           <div>
             <Typography
               variant="h4"
-              className="text-primary m-0 line-clamp-2 text-balance"
+              className="group-hover:text-primary m-0 line-clamp-2 text-balance"
             >
               {item.title}
             </Typography>

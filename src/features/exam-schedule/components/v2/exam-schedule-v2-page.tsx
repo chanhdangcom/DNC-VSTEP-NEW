@@ -12,20 +12,11 @@ import {
   sortExamScheduleItems,
   type ExamScheduleDateSortValue,
 } from "../../utils/filter-exam-schedule";
-import { ExamScheduleV2Filters } from "./exam-schedule-v2-filters";
 import { ExamScheduleV2BentoGrid } from "./exam-schedule-v2-bento-grid";
-import { Search } from "lucide-react";
-import {
-  InputGroup,
-  InputGroupInput,
-  InputGroupAddon,
-  InputGroupText,
-} from "@/components/ui/input-group";
+import { ExamScheduleV2Filters } from "./exam-schedule-v2-filters";
 
 export type V2ExamScheduleType =
-  | "Lịch thi"
-  | "Thông báo ôn thi"
-  | "Kế hoạch năm";
+  "Lịch thi" | "Thông báo ôn thi" | "Kế hoạch năm";
 
 type ExamScheduleV2PageProps = {
   banner: PageBannerProps;
@@ -49,7 +40,7 @@ export function ExamScheduleV2Page({
   const filteredItems = useMemo(() => {
     let result = examSchedulePageItems;
 
-    // Filter by type (since "Tất cả" is removed, we always filter by the selected type)
+    // Filter by type
     result = result.filter((item) => item.label === type);
 
     // Filter by search query
@@ -68,58 +59,28 @@ export function ExamScheduleV2Page({
   }, [type, deferredQuery, dateSort]);
 
   return (
-    <PageHubShell
-      banner={banner}
-      breadcrumbs={breadcrumbs}
-      // No sidebar, passing null/undefined means it uses full width
-    >
+    <PageHubShell banner={banner} breadcrumbs={breadcrumbs}>
       <div className="mx-auto flex w-full flex-col gap-8">
-        {/* <div className="flex w-full flex-col gap-8 md:gap-16">
-     
-          <section className="flex flex-col items-center justify-center text-center">
-            <div className="inline-flex flex-col items-center space-y-8">
-              <span className="font-signature text-primary text-md mb-4 underline">
-                Lịch thi & Ôn luyện
-              </span>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <ExamScheduleV2Filters
+            query={query}
+            onQueryChange={setQuery}
+            type={type}
+            onTypeChange={setType}
+            dateSort={dateSort}
+            onDateSortChange={setDateSort}
+          />
+        </div>
 
-              <h1 className="text-3xl font-semibold tracking-tight text-zinc-900">
-                Tìm kiếm thông tin
-              </h1>
+        {/* Header Kết quả tìm kiếm */}
 
-              <p className="text-md mx-auto text-zinc-600">
-                Cập nhật những thông tin mới nhất bao gồm{" "}
-                <strong className="font-semibold text-zinc-900">
-                  kế hoạch thi
-                </strong>
-                ,{" "}
-                <strong className="font-semibold text-zinc-900">
-                  lịch khai giảng lớp ôn
-                </strong>{" "}
-                giúp bạn tự tin chinh phục chứng chỉ{" "}
-                <strong className="font-semibold text-zinc-900">VSTEP</strong>.
-              </p>
-
-            </div>
-          </section>
-
-          <div className="relative right-1/2 left-1/2 -mr-[50vw] -ml-[50vw] h-px w-screen bg-zinc-200" />
+        {/* <div className="text-muted-foreground text-md flex items-center gap-2 font-medium">
+          Tìm thấy{" "}
+          <strong className="text-primary">{filteredItems.length}</strong> kết
+          quả
         </div> */}
 
-        {/* Bento Grid Section */}
-        <section className="space-y-8">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <ExamScheduleV2Filters
-              query={query}
-              onQueryChange={setQuery}
-              type={type}
-              onTypeChange={setType}
-              dateSort={dateSort}
-              onDateSortChange={setDateSort}
-            />
-          </div>
-
-          <ExamScheduleV2BentoGrid items={filteredItems} />
-        </section>
+        <ExamScheduleV2BentoGrid items={filteredItems} />
       </div>
     </PageHubShell>
   );

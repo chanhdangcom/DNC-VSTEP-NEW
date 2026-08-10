@@ -5,6 +5,7 @@ import {
   HOME_INTRO_HEADLINE_GRADIENT,
   HOME_INTRO_QUOTE_ACCENT,
 } from "../utils/home-intro-theme";
+import { HOME_BANNER_TITLE_COLORS } from "../utils/home-banner-theme";
 
 type HomeIntroContentProps = {
   className?: string;
@@ -20,15 +21,21 @@ export function HomeIntroContent({ className }: HomeIntroContentProps) {
         />
 
         <div className="space-y-2 sm:space-y-3">
-          <h2
-            className="text-primary text-6xl leading-[0.86] font-black tracking-[-0.04em] italic sm:text-7xl md:text-8xl lg:text-9xl"
-            style={{
-              background: HOME_INTRO_HEADLINE_GRADIENT,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-            }}
-          >
-            {homeIntroContent.headline}
+          <h2 className="text-6xl leading-[0.86] font-black tracking-[-0.04em] italic sm:text-7xl md:text-8xl lg:text-9xl">
+            {homeIntroContent.headline.split("").map((char, index) => (
+              <span
+                key={`${char}-${index}`}
+                className="inline-block"
+                style={{
+                  color:
+                    HOME_BANNER_TITLE_COLORS[
+                      Math.min(index, HOME_BANNER_TITLE_COLORS.length - 1)
+                    ],
+                }}
+              >
+                {char}
+              </span>
+            ))}
           </h2>
 
           <p className="text-primary pl-8 text-xl font-bold sm:text-2xl md:text-3xl">

@@ -15,13 +15,48 @@ type ExamScheduleSeed = {
 /** Publish date = ~1 month before exam month (mock pattern from site). */
 const EXAM_SCHEDULE_SEEDS: readonly ExamScheduleSeed[] = [
   {
+    examMonth: 12,
+    examYear: 2026,
+    publishDay: 18,
+    publishMonth: 11,
+    publishYear: 2026,
+    isNew: true,
+    isImportant: true,
+  },
+  {
+    examMonth: 11,
+    examYear: 2026,
+    publishDay: 15,
+    publishMonth: 10,
+    publishYear: 2026,
+  },
+  {
+    examMonth: 10,
+    examYear: 2026,
+    publishDay: 20,
+    publishMonth: 9,
+    publishYear: 2026,
+  },
+  {
+    examMonth: 9,
+    examYear: 2026,
+    publishDay: 12,
+    publishMonth: 8,
+    publishYear: 2026,
+  },
+  {
+    examMonth: 8,
+    examYear: 2026,
+    publishDay: 10,
+    publishMonth: 7,
+    publishYear: 2026,
+  },
+  {
     examMonth: 7,
     examYear: 2026,
     publishDay: 29,
     publishMonth: 6,
     publishYear: 2026,
-    isNew: true,
-    isImportant: true,
   },
   {
     examMonth: 6,
@@ -49,6 +84,13 @@ const EXAM_SCHEDULE_SEEDS: readonly ExamScheduleSeed[] = [
     examYear: 2026,
     publishDay: 24,
     publishMonth: 2,
+    publishYear: 2026,
+  },
+  {
+    examMonth: 2,
+    examYear: 2026,
+    publishDay: 15,
+    publishMonth: 1,
     publishYear: 2026,
   },
   {

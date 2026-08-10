@@ -355,6 +355,11 @@ type FullCalendarYearViewProps = {
     monthDate: Date;
     eventCount: number;
   }) => ReactNode;
+  renderMonthFooter?: (args: {
+    monthDate: Date;
+    events: FullCalendarEvent[];
+  }) => ReactNode;
+  hideDays?: boolean;
 };
 
 export function FullCalendarYearView({
@@ -362,6 +367,8 @@ export function FullCalendarYearView({
   onMonthClick,
   renderDay,
   renderMonthHeader,
+  renderMonthFooter,
+  hideDays,
 }: FullCalendarYearViewProps) {
   const { date, view, events, locale, weekStartsOn, setDate, setView } =
     useFullCalendar();
@@ -426,12 +433,13 @@ export function FullCalendarYearView({
                   </button>
                 )}
 
-                <div
-                  className="grid grid-cols-7"
-                  style={{
-                    gridTemplateRows: "1.25rem repeat(6, 1.7rem)",
-                  }}
-                >
+                {!hideDays && (
+                  <div
+                    className="grid grid-cols-7"
+                    style={{
+                      gridTemplateRows: "1.25rem repeat(6, 1.7rem)",
+                    }}
+                  >
                   {weekDays.map((day, weekdayIndex) => (
                     <div
                       key={`${monthDate.toISOString()}-wd-${weekdayIndex}`}
@@ -487,6 +495,12 @@ export function FullCalendarYearView({
                     );
                   })}
                 </div>
+                )}
+                {renderMonthFooter &&
+                  renderMonthFooter({
+                    monthDate,
+                    events: monthEvents,
+                  })}
               </div>
             );
           })}

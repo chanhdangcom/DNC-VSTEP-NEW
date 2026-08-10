@@ -3,7 +3,7 @@ import { HomeBenefitsHero } from "./home-benefits-hero";
 
 export function HomeBenefitsSection() {
   return (
-    <section id="noi-dung" className="bg-primary scroll-mt-28">
+    <section id="noi-dung" className="scroll-mt-28 bg-red-800">
       <HomeBenefitsHero />
 
       <div className="py-12 sm:py-14 lg:py-16">

@@ -10,17 +10,35 @@ import {
 import { cn } from "@/lib/utils";
 import type { ExamScheduleItem } from "../../exam-schedule-data";
 import { paginateExamScheduleItems } from "../../utils/filter-exam-schedule";
-import { ExamSchedulePagination } from "../exam-schedule-pagination";
 import {
   ExamScheduleItemCard,
   FeaturedExamScheduleCard,
 } from "../exam-schedule-item-card";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
-const PAGE_SIZE = 12;
+const PAGE_SIZE = 10;
 
 type ExamScheduleV2BentoGridProps = {
   items: readonly ExamScheduleItem[];
 };
+
+function getPageWindow(page: number, totalPages: number) {
+  const windowSize = 5;
+  const half = Math.floor(windowSize / 2);
+  let start = Math.max(1, page - half);
+  const end = Math.min(totalPages, start + windowSize - 1);
+  start = Math.max(1, end - windowSize + 1);
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+}
 
 export function ExamScheduleV2BentoGrid({
   items,
@@ -49,6 +67,8 @@ export function ExamScheduleV2BentoGrid({
     );
   }
 
+  const pages = getPageWindow(safePage, totalPages);
+
   return (
     <div className="space-y-12">
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -68,22 +88,60 @@ export function ExamScheduleV2BentoGrid({
         })}
       </div>
 
-      <div
-        className="flex justify-center"
-        onClick={(e) => {
-          // Intercept clicks on pagination links to handle state instead of URL
-          const target = e.target as HTMLElement;
-          const link = target.closest("a");
-          if (link) {
-            e.preventDefault();
-            const url = new URL(link.href);
-            const newPage = url.searchParams.get("page");
-            if (newPage) setPage(Number(newPage));
-          }
-        }}
-      >
-        <ExamSchedulePagination page={safePage} totalPages={totalPages} />
-      </div>
+      {totalPages > 1 && (
+        <div
+          className="flex justify-center"
+          onClick={(e) => {
+            // Intercept clicks on pagination links to handle state instead of URL
+            const target = e.target as HTMLElement;
+            const link = target.closest("a");
+            if (link) {
+              e.preventDefault();
+              const url = new URL(link.href, window.location.href);
+              const newPage = url.searchParams.get("page");
+              if (newPage) setPage(Number(newPage));
+            }
+          }}
+        >
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href={safePage > 1 ? `?page=${safePage - 1}` : "#"}
+                  className={
+                    safePage <= 1 ? "pointer-events-none opacity-50" : ""
+                  }
+                />
+              </PaginationItem>
+
+              {pages.map((n) => (
+                <PaginationItem key={n}>
+                  <PaginationLink
+                    href={`?page=${n}`}
+                    isActive={n === safePage}
+                    className={
+                      n === safePage ? "text-primary hover:text-primary" : ""
+                    }
+                  >
+                    {n}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+
+              <PaginationItem>
+                <PaginationNext
+                  href={safePage < totalPages ? `?page=${safePage + 1}` : "#"}
+                  className={
+                    safePage >= totalPages
+                      ? "pointer-events-none opacity-50"
+                      : ""
+                  }
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   );
 }
