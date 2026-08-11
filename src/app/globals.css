@@ -256,6 +256,12 @@ html {
   color: var(--foreground);
 }
 
+.inverse-selection *::selection,
+.inverse-selection::selection {
+  background-color: white !important;
+  color: black !important;
+}
+
 .container {
   max-width: 88rem;
   margin-inline: auto;

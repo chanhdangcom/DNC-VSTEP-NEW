@@ -26,7 +26,7 @@ export function PageImageHero({
   imageUrl,
 }: PageImageHeroProps) {
   return (
-    <div className="relative flex min-h-[340px] flex-col justify-end overflow-hidden sm:min-h-[400px] lg:min-h-[440px]">
+    <div className="inverse-selection relative flex min-h-[340px] flex-col justify-end overflow-hidden sm:min-h-[400px] lg:min-h-[440px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image

@@ -16,7 +16,7 @@ import {
 
 export function ContactDetailsPanel() {
   return (
-    <Card className="relative flex h-full w-full flex-col overflow-hidden rounded-[2rem] border-none bg-blue-900 text-white ring-0 inset-ring-1 inset-ring-black/15 transition-all duration-500 dark:bg-zinc-900">
+    <Card className="inverse-selection relative flex h-full w-full flex-col overflow-hidden rounded-[2rem] border-none bg-blue-900 text-white ring-0 inset-ring-1 inset-ring-black/15 transition-all duration-500 dark:bg-zinc-900">
       {/* Decorative Background Elements */}
       <div className="pointer-events-none absolute -top-20 -right-20 size-64 rounded-full bg-white opacity-[0.03] blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 -left-20 size-80 rounded-full bg-blue-500 opacity-[0.15] blur-3xl" />

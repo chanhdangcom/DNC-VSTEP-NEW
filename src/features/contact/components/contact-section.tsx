@@ -25,7 +25,7 @@ export function ContactSection() {
 
       <div className="relative flex min-h-[min(72vh,40rem)] flex-col items-center justify-center px-6 py-20 text-center sm:px-8 lg:min-h-[min(78vh,44rem)] lg:py-28">
         <div className="space-y-8 sm:space-y-10">
-          <div className="space-y-4 sm:space-y-5">
+          <div className="inverse-selection space-y-4 sm:space-y-5">
             <h2 className="text-primary text-6xl leading-[0.9] font-black tracking-[-0.04em] sm:text-7xl md:text-8xl lg:text-9xl">
               {contactSection.heading}
             </h2>
