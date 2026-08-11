@@ -38,7 +38,7 @@ export function DocumentFormCard({ item }: DocumentFormCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group bg-card flex h-full gap-4 rounded-2xl p-1 shadow-md ring-1 shadow-black/5 ring-black/6",
+          "group bg-card flex h-full gap-4 rounded-2xl p-1 shadow-xs ring-1 shadow-black/5 ring-black/3",
           "hover:border-primary/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "focus-visible:ring-primary/30 focus-visible:ring-2 focus-visible:outline-none"
         )}
@@ -73,11 +73,11 @@ export function DocumentFormCard({ item }: DocumentFormCardProps) {
         </div>
 
         {/* Action Arrow (Right) */}
-        <div className="hidden shrink-0 items-center justify-center pr-3.5 sm:flex">
+        {/* <div className="hidden shrink-0 items-center justify-center pr-3.5 sm:flex">
           <span className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-primary/25 bg-muted/80 text-muted-foreground flex size-8 items-center justify-center rounded-full shadow-2xs transition-all duration-300 group-hover:translate-x-0.5 group-hover:shadow-md">
             <ArrowRight className="size-4" weight="bold" aria-hidden />
           </span>
-        </div>
+        </div> */}
       </Link>
     </article>
   );

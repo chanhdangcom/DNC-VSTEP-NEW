@@ -60,7 +60,7 @@ export function ExamScheduleV2Page({
 
   return (
     <PageHubShell banner={banner} breadcrumbs={breadcrumbs}>
-      <div className="mx-auto flex w-full flex-col gap-8">
+      <div className="mx-auto flex w-full flex-col gap-4">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <ExamScheduleV2Filters
             query={query}
@@ -74,11 +74,11 @@ export function ExamScheduleV2Page({
 
         {/* Header Kết quả tìm kiếm */}
 
-        {/* <div className="text-muted-foreground text-md flex items-center gap-2 font-medium">
-          Tìm thấy{" "}
-          <strong className="text-primary">{filteredItems.length}</strong> kết
-          quả
-        </div> */}
+        <div className="text-muted-foreground flex items-center gap-2 text-sm">
+          Tìm thấy
+          <strong className="text-primary">{filteredItems.length}</strong>
+          kết quả
+        </div>
 
         <ExamScheduleV2BentoGrid items={filteredItems} />
       </div>

@@ -90,7 +90,7 @@ export function PageImageHero({
           {banner.description && (
             <Typography
               variant="lead"
-              className="text-lg text-balance text-zinc-300"
+              className="text-lg text-balance text-zinc-400"
             >
               {banner.description}
             </Typography>
