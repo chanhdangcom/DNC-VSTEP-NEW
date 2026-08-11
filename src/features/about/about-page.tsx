@@ -10,7 +10,7 @@ export function AboutPage() {
 
       <main className="flex-1 pt-[var(--app-header-height)]">
         <PageImageHero
-          imageUrl="/images/banner/gioithieu.jfif"
+          imageUrl="/images/banner/gioithieu.jpg"
           banner={{
             title: "Giới thiệu",
             description:
