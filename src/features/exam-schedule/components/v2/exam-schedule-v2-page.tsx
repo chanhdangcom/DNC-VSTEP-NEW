@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useDeferredValue, useMemo } from "react";
+import { Suspense, useState, useDeferredValue, useMemo } from "react";
 import {
   PageHubShell,
   type PageBannerProps,
@@ -23,7 +23,15 @@ type ExamScheduleV2PageProps = {
   breadcrumbs?: readonly PageBreadcrumbItem[];
 };
 
-export function ExamScheduleV2Page({
+export function ExamScheduleV2Page(props: ExamScheduleV2PageProps) {
+  return (
+    <Suspense fallback={null}>
+      <ExamScheduleV2PageContent {...props} />
+    </Suspense>
+  );
+}
+
+function ExamScheduleV2PageContent({
   banner,
   breadcrumbs,
 }: ExamScheduleV2PageProps) {

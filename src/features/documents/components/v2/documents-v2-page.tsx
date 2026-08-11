@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useState, useDeferredValue, useMemo } from "react";
+import { Suspense, useState, useDeferredValue, useMemo } from "react";
 import {
   PageHubShell,
   type PageBannerProps,
@@ -27,7 +27,15 @@ type DocumentsV2PageProps = {
   breadcrumbs?: readonly PageBreadcrumbItem[];
 };
 
-export function DocumentsV2Page({ banner, breadcrumbs }: DocumentsV2PageProps) {
+export function DocumentsV2Page(props: DocumentsV2PageProps) {
+  return (
+    <Suspense fallback={null}>
+      <DocumentsV2PageContent {...props} />
+    </Suspense>
+  );
+}
+
+function DocumentsV2PageContent({ banner, breadcrumbs }: DocumentsV2PageProps) {
   const searchParams = useSearchParams();
   const initialQuery = searchParams.get("q") ?? "";
 
