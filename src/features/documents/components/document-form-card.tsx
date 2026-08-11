@@ -47,7 +47,8 @@ export function DocumentFormCard({ item }: DocumentFormCardProps) {
         <div className="flex self-stretch">
           <div className="group-hover:border-primary/30 flex h-full w-20 shrink-0 flex-col items-center justify-center rounded-xl p-2 ring-1 ring-black/6 transition-colors duration-200">
             <FileIcon
-              className={cn("size-8 shrink-0", theme.iconClass)}
+              size={32}
+              className={cn("shrink-0", theme.iconClass)}
               weight="light"
             />
           </div>

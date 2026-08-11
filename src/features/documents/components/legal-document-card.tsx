@@ -17,17 +17,18 @@ export function LegalDocumentCard({ item }: LegalDocumentCardProps) {
       <Link
         href={item.href}
         className={cn(
-          "group bg-card flex h-full gap-4 rounded-2xl p-1 shadow-md ring-1 shadow-black/5 ring-black/6",
-          "hover:border-primary/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-lg",
+          "group bg-card flex h-full gap-4 rounded-2xl p-1 shadow-xs ring-1 shadow-black/5 ring-black/3",
+          "hover:border-primary/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]",
           "focus-visible:ring-primary/30 focus-visible:ring-2 focus-visible:outline-none"
         )}
       >
-        {/* Icon & Format Block (Left) - Cân bằng kích thước với bên Lịch thi */}
+        {/* Icon & Format Block (Left) - Đồng bộ với Văn bản biểu mẫu */}
         <div className="flex self-stretch">
-          <div className="group-hover:border-primary/30 flex h-full w-24 shrink-0 flex-col items-center justify-center rounded-xl p-2 ring-1 ring-black/6 transition-colors duration-200">
+          <div className="group-hover:border-primary/30 flex h-full w-20 shrink-0 flex-col items-center justify-center rounded-xl p-2 ring-1 ring-black/6 transition-colors duration-200">
             <FilePdf
-              className="size-12 shrink-0 text-red-600 drop-shadow-sm dark:text-red-400"
-              weight="duotone"
+              size={32}
+              className="shrink-0 text-red-600 dark:text-red-400"
+              weight="light"
             />
           </div>
         </div>
@@ -42,12 +43,12 @@ export function LegalDocumentCard({ item }: LegalDocumentCardProps) {
           </Typography>
         </div>
 
-        {/* Action Arrow (Right) */}
-        <div className="hidden shrink-0 items-center justify-center pr-3.5 sm:flex">
+        {/* Action Arrow (Right) - Ẩn giống Văn bản biểu mẫu */}
+        {/* <div className="hidden shrink-0 items-center justify-center pr-3.5 sm:flex">
           <span className="group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-primary/25 bg-muted/80 text-muted-foreground flex size-8 items-center justify-center rounded-full shadow-2xs transition-all duration-300 group-hover:translate-x-0.5 group-hover:shadow-md">
             <ArrowRight className="size-4" weight="bold" aria-hidden />
           </span>
-        </div>
+        </div> */}
       </Link>
     </article>
   );
