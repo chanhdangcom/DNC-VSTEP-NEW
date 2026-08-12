@@ -89,6 +89,7 @@ export function HeaderMain({
       <HeaderFullscreenMenu
         open={isDesktopMenuOpen}
         onOpenChange={setIsDesktopMenuOpen}
+        isScrolled={isScrolled}
       />
     </>
   );

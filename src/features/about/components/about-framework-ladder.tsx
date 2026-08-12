@@ -82,7 +82,7 @@ export function AboutFrameworkLadder({
                 value={level.id}
                 className="mt-4 outline-none sm:mt-6"
               >
-                <Card className="overflow-hidden rounded-[2rem] border-none bg-white/95 p-4 shadow-2xl shadow-black/20 backdrop-blur-md sm:p-8 sm:px-10">
+                <Card className="flex min-h-[520px] flex-col overflow-hidden rounded-[2rem] border-none bg-white/95 p-4 shadow-2xl shadow-black/20 backdrop-blur-md sm:min-h-[480px] sm:p-8 sm:px-10">
                   <CardHeader className="flex flex-row flex-wrap items-center justify-between gap-4 border-b border-zinc-200/60 px-0 pt-0 pb-6">
                     <CardTitle className="text-primary text-3xl font-bold tracking-tight sm:text-4xl">
                       Bậc {idx + 1}: {level.group}
@@ -103,13 +103,13 @@ export function AboutFrameworkLadder({
 
                   {/* Main Description */}
                   <CardContent className="px-0">
-                    <p className="text-foreground text-lg leading-relaxed text-pretty">
+                    <p className="text-foreground text-lg leading-relaxed text-justify">
                       {level.fullDescription}
                     </p>
                   </CardContent>
 
                   {/* Specific Capabilities List */}
-                  <CardFooter className="flex-col items-start border-t border-zinc-200/60 px-0 pt-8 pb-0">
+                  <CardFooter className="mt-auto flex-col items-start border-t border-zinc-200/60 px-0 pt-8 pb-0">
                     <h4 className="mb-5 text-sm font-bold tracking-wider text-zinc-900">
                       Năng lực đạt được:
                     </h4>
@@ -136,7 +136,7 @@ export function AboutFrameworkLadder({
                             </svg>
                           </div>
 
-                          <span className="text-foreground text-lg leading-relaxed">
+                          <span className="text-foreground text-lg leading-relaxed text-justify">
                             {cap}
                           </span>
                         </div>

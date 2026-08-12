@@ -1,8 +1,14 @@
 "use client";
 
-import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { cn } from "@/lib/utils";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 type ExamSchedulePaginationProps = {
   page: number;
@@ -20,15 +26,6 @@ function pageWindow(page: number, totalPages: number) {
   return Array.from({ length: end - start + 1 }, (_, i) => start + i);
 }
 
-const itemClass = cn(
-  "border-primary/15 inline-flex size-9 shrink-0 touch-manipulation items-center justify-center rounded-full border bg-white text-sm font-semibold text-zinc-800 sm:size-10",
-  "transition-colors"
-);
-
-/**
- * Phân trang bằng thẻ <a> thuần (không onClick React) —
- * cùng pattern menu mobile / accordion đã chạy ổn trên thiết bị này.
- */
 export function ExamSchedulePagination({
   page,
   totalPages,
@@ -55,73 +52,38 @@ export function ExamSchedulePagination({
   const pages = pageWindow(page, totalPages);
 
   return (
-    <nav
-      aria-label="Phân trang lịch thi"
-      className={cn(
-        "relative z-50 flex flex-nowrap items-center justify-center gap-1.5 sm:gap-2",
-        className
-      )}
-    >
-      {page <= 1 ? (
-        <span
-          aria-hidden
-          className={cn(itemClass, "pointer-events-none opacity-35")}
-        >
-          <CaretLeft className="size-4" weight="bold" />
-        </span>
-      ) : (
-        <a
-          href={hrefForPage(page - 1)}
-          aria-label="Trang trước"
-          className={cn(
-            itemClass,
-            "hover:border-primary/45 hover:text-primary"
-          )}
-        >
-          <CaretLeft className="size-4" weight="bold" aria-hidden />
-        </a>
-      )}
+    <div className={className}>
+      <Pagination>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrevious
+              href={page > 1 ? hrefForPage(page - 1) : "#"}
+              className={page <= 1 ? "pointer-events-none opacity-50" : ""}
+            />
+          </PaginationItem>
 
-      {pages.map((n) => {
-        const active = n === page;
+          {pages.map((n) => (
+            <PaginationItem key={n}>
+              <PaginationLink
+                href={hrefForPage(n)}
+                isActive={n === page}
+                className={
+                  n === page ? "text-primary hover:text-primary" : ""
+                }
+              >
+                {n}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
 
-        return (
-          <a
-            key={n}
-            href={hrefForPage(n)}
-            aria-label={`Trang ${n}`}
-            aria-current={active ? "page" : undefined}
-            className={cn(
-              itemClass,
-              active
-                ? "bg-primary border-transparent text-white"
-                : "hover:border-primary/45 hover:text-primary"
-            )}
-          >
-            {n}
-          </a>
-        );
-      })}
-
-      {page >= totalPages ? (
-        <span
-          aria-hidden
-          className={cn(itemClass, "pointer-events-none opacity-35")}
-        >
-          <CaretRight className="size-4" weight="bold" />
-        </span>
-      ) : (
-        <a
-          href={hrefForPage(page + 1)}
-          aria-label="Trang sau"
-          className={cn(
-            itemClass,
-            "hover:border-primary/45 hover:text-primary"
-          )}
-        >
-          <CaretRight className="size-4" weight="bold" aria-hidden />
-        </a>
-      )}
-    </nav>
+          <PaginationItem>
+            <PaginationNext
+              href={page < totalPages ? hrefForPage(page + 1) : "#"}
+              className={page >= totalPages ? "pointer-events-none opacity-50" : ""}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </div>
   );
 }
